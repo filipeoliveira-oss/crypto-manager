@@ -19,24 +19,10 @@ Open `localhost` using you default port to view it in the browser.
 E.g.: *localhost:3000*
 
 
-### Project prototype and screenshots
+### Project prototype
 
 > to see the prototype go to: [Figma prototype](https://www.figma.com/file/r6DpCJhOmANmWKiqD1ptBG/Crypto-project?node-id=1%3A2)
 
-### Featured movie
-(https://ibb.co/7YxNGCv)
-
-### Featured movie
-![Home](https://ibb.co/JFSQ3c9)
-
-### Featured movie
-![Home expanded](https://ibb.co/tBLf6dx)
-
-### Featured movie
-![Search](https://ibb.co/SdCHZDz)
-
-### Featured movie
-![Currency](https://ibb.co/KLkK0Gs)
 
 ## Learn More about React
 
