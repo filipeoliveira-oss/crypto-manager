@@ -24,7 +24,7 @@ E.g.: *localhost:3000*
 > to see the prototype go to: [Figma prototype](https://www.figma.com/file/r6DpCJhOmANmWKiqD1ptBG/Crypto-project?node-id=1%3A2)
 
 ### Featured movie
-![Login](https://ibb.co/7YxNGCv)
+(https://ibb.co/7YxNGCv)
 
 ### Featured movie
 ![Home](https://ibb.co/JFSQ3c9)
