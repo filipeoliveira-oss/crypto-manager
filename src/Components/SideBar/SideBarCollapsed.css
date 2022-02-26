@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+
+.sideBar{
+    position: absolute;
+    width: 98px;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+
+    background: #f7f4ff;
+}
+.profile{
+    
+    height: 57px;
+    width: 61px;
+    margin-left: calc(50% - 30.5px);
+
+    background: #7064f7;
+    border-radius: 20px;
+
+}
+.profile h3{
+    display: flex;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    
+    color: white;
+
+    justify-content: center;
+    padding-top: calc(50% - 25px);
+}
+.profile h1{
+    
+    width: 25px;
+    height: 26px;
+    background: #7064f7;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+
+    margin-left: 110%;
+    margin-top: -70px;
+}
+button{
+    width: 76px;
+    height: 70px;
+    border-radius: 20px;
+    border-style: none;
+    background: #E7E5E5;
+
+    margin-top: 56px;
+    margin-left: calc(50% - 38px);
+
+    transition: ease all 0.3s;
+}
+.search img{
+    width: 34.97px;
+    height: 40.94px;
+    transform: rotate(-0.04deg);
+}
+.home img{
+    width: 57px;
+    height: 57px;
+}
+.table img{
+    width: 48px;
+    height: 50px;
+}
+button:hover{
+    -webkit-filter: brightness(93%);   
+}
+.logout{
+    position: inherit;
+    display: flex;
+    width: 76px;
+    height: 70px;
+    border-radius: 20px;
+    border-style: none;
+    background: #E7E5E5;
+
+    margin-top: 300px;
+    margin-left: calc(50% - 38px);
+
+    transition: ease all 0.3s;
+}
+.logout img{
+    width: 57px;
+    height: 67;
+
+    margin-right: calc(50% - 23.5px);
+    transform: rotate(180deg);
+}

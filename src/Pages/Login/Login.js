@@ -7,6 +7,17 @@ function Login(){
     const [username, setUsername] = useState('');
     const [password, setPassword ] = useState('');
 
+    const handleLogin = (event) =>{
+         if(username == 'login' && password == 'senha'){
+             alert('ok');
+         }else{
+            alert('falhou');
+            setUsername((username) => username ='');
+            setPassword((password) => password = '');
+         }
+         event.preventDefault()
+    }
+
 
     return(
         <>
@@ -27,7 +38,7 @@ function Login(){
 
                     <label className='forgotPassword'>Esqueceu sua senha?</label>
 
-                    <button className='signin'>Logar</button>
+                    <button className='signin' type='submit' onClick={handleLogin}>Logar</button>
 
                     <label className='account'>Não tem uma conta? <span>Clique aqui!</span></label>
                 </form>
