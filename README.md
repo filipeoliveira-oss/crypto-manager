@@ -11,8 +11,9 @@ All the images used in this project belongs to their respectives owners.
 
 
 ## Available Scripts
-
-To run this project you must run `npm start`\
+To run this project you must install the MUI dependencies <br/> `npm install @mui/material @emotion/react @emotion/styled`\
+`npm install @mui/material @mui/styled-engine-sc styled-components`\ <br/>
+then run `npm start`\
 Runs the app in the development mode.\
 Open `localhost` using you default port to view it in the browser.
 

@@ -14,19 +14,19 @@ function SideBar(){
                 </div>
 
                 <div >
-                    <button className='search'><img src={require('../../Assets/search.png')}/></button>
+                    <button className='search'><img src={require('../../Assets/search.png')} alt='search'/></button>
                 </div>
 
                 <div >
-                    <button className='home'><img src={require('../../Assets/home.png')}/></button>
+                    <button className='home'><img src={require('../../Assets/home.png')} alt='home'/></button>
                 </div>
 
                 <div >
-                    <button className='table'><img src={require('../../Assets/table.png')}/></button>
+                    <button className='table'><img src={require('../../Assets/table.png')} alt='crypto'/></button>
                 </div>
 
                 <div >
-                    <button className='logout'><img src={require('../../Assets/logout.png')}/></button>
+                    <button className='logout'><img src={require('../../Assets/logout.png')} alt='logout'/></button>
                 </div>
 
                 <div >

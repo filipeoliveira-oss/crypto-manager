@@ -8,7 +8,7 @@ function Login(){
     const [password, setPassword ] = useState('');
 
     const handleLogin = (event) =>{
-         if(username == 'login' && password == 'senha'){
+         if(username === 'login' && password === 'senha'){
              alert('ok');
          }else{
             alert('falhou');
@@ -22,7 +22,7 @@ function Login(){
     return(
         <>
             <div>
-                <img className='loginImage' src={require('../../Assets/Wavy_Tech-10_Single-10.png')}/>
+                <img className='loginImage' src={require('../../Assets/Wavy_Tech-10_Single-10.png')} alt=''/>
             </div>
             
                 <h1 className='appName'>Crypto Manager</h1>
@@ -31,10 +31,10 @@ function Login(){
                 <form className='loginContainer' >
                     
                     <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Usuário' className='username' />
-                    <img className='usernameImg' src={require('../../Assets/user.png')}/>
+                    <img className='usernameImg' src={require('../../Assets/user.png')} alt=''/>
 
                     <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Senha' className='password'/>
-                    <img className='passwordImg' src={require('../../Assets/locker.png')}/>
+                    <img className='passwordImg' src={require('../../Assets/locker.png')} alt=''/>
 
                     <label className='forgotPassword'>Esqueceu sua senha?</label>
 
