@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import UseSwitchesCustom from '../ToggleTheme/ToggleTheme';
-import './SideBarCollapsed.css'
+import './SideBar.css'
 
 
 function SideBar(){
 
-    const [isActive, setActive] = useState("true");
+    const [isActive, setActive] = useState('false');
 
     const handleToggle = () => {
-        setActive(!isActive);
+        setActive(!isActive);    
+               
     };
 
     return(
         <>
+
             <div className={`sideBar${isActive ? "" : "--active"}`}>
 
                 <div className={`profile${isActive ? "" : "--active"}`}>

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
+
 li{
     list-style-type: none;
 }
@@ -7,13 +8,13 @@ li{
  /* Closed side bar */
  .search p, .table p, .home p, .logout p{
     position: absolute;
-    /* display: inline; */
     visibility: hidden;
     z-index: 20;
  }
 
 .sideBar{
     position: absolute;
+
     width: 98px;
     height: 100%;
     left: 0px;
@@ -136,6 +137,8 @@ button:hover{
     user-select: none;
 
     transition: ease all 0.7s;
+
+    
 }
 .profile--active{
     height: 57px;
@@ -228,7 +231,7 @@ button:hover{
     margin-top: 300px;
     
 
-    transition: ease all 0.3s;
+    transition: ease all 0.7s;
 }
 .search--active p, .table--active p, .home--active p, .logout--active p{
     position: absolute;
