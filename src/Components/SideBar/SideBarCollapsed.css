@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
+li{
+    list-style-type: none;
+}
+
+ /* Closed side bar */
+ .search p, .table p, .home p, .logout p{
+    position: absolute;
+    /* display: inline; */
+    visibility: hidden;
+    z-index: 20;
+ }
 
 .sideBar{
     position: absolute;
@@ -7,19 +18,21 @@
     height: 100%;
     left: 0px;
     top: 0px;
-
+    margin: 0;
     background: #f7f4ff;
+    
     user-select: none;
+
+    transition: ease all 0.7s;
 }
 .profile{
     
     height: 57px;
     width: 61px;
     margin-left: calc(50% - 30.5px);
-
+    
     background: #7064f7;
     border-radius: 20px;
-
 }
 .profile h3{
     display: flex;
@@ -34,7 +47,7 @@
     justify-content: center;
     padding-top: calc(50% - 25px);
 }
-.profile h1{
+.expand{
     
     width: 25px;
     height: 26px;
@@ -47,6 +60,14 @@
 
     margin-left: 110%;
     margin-top: -70px;
+
+    transition: ease all 0.7s;
+}
+a{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    text-decoration: none;
 }
 button{
     width: 76px;
@@ -56,20 +77,22 @@ button{
     background: #E7E5E5;
 
     margin-top: 56px;
-    margin-left: calc(50% - 38px);
+    margin-left: 11px;
 
-    transition: ease all 0.3s;
+    transition: ease all 0.7s;
 }
-.search img{
+
+.searchImg{
+    /* margin-left: 8px; */
     width: 34.97px;
     height: 40.94px;
     transform: rotate(-0.04deg);
 }
-.home img{
+.homeImg{
     width: 57px;
     height: 57px;
 }
-.table img{
+.tableImg{
     width: 48px;
     height: 50px;
 }
@@ -90,10 +113,135 @@ button:hover{
 
     transition: ease all 0.3s;
 }
-.logout img{
+.logoutImg{
+    position: absolute;
     width: 57px;
     height: 67;
 
-    margin-right: calc(50% - 23.5px);
+    /* margin-right: calc(50% - 23.5px); */
     transform: rotate(180deg);
+} 
+
+
+/* open side bar */
+
+.sideBar--active{
+    position: absolute;
+    width: 230px;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    margin: 0;
+    background: #f7f4ff;
+    user-select: none;
+
+    transition: ease all 0.7s;
+}
+.profile--active{
+    height: 57px;
+    width: 61px;
+    margin-left: calc(50% - 30.5px);
+    
+    background: #7064f7;
+    border-radius: 20px;
+}
+
+.profile--active h3{
+    display: flex;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    
+    color: white;
+
+    justify-content: center;
+    padding-top: calc(50% - 25px);
+}
+
+.expand--active{
+    
+    width: 25px;
+    height: 26px;
+    background: #7064f7;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+
+    margin-left: 135px;
+    margin-top: -70px;
+
+    transform: rotateY(180deg);
+
+    transition: ease all 0.7s;
+}
+.search--active, .table--active, .home--active{
+    display: flex;
+    width: 200px;
+    height: 70px;
+    border-radius: 20px;
+    border-style: none;
+    background: #E7E5E5;
+
+    margin-top: 56px;
+    margin-left: 11px;
+
+    transition: ease all 0.7s;
+}
+.search--active img{
+    
+    width: 34.97px;
+    height: 40.94px;
+    transform: rotate(-0.04deg);
+    
+    position: absolute; 
+    left: 19px;
+    padding: 12px;
+}
+.home--active img{
+    width: 57px;
+    height: 57px;
+
+    position: absolute; 
+    left: 21px;
+    padding-top: 4px;
+}
+.table--active img{
+    width: 48px;
+    height: 50px;
+
+    position: absolute; 
+    left: 25px;
+    padding-top: 8px;
+}
+.logout--active{
+    display: flex;
+    width: 200px;
+    height: 70px;
+    border-radius: 20px;
+    border-style: none;
+    background: #E7E5E5;
+
+    margin-top: 300px;
+    
+
+    transition: ease all 0.3s;
+}
+.search--active p, .table--active p, .home--active p, .logout--active p{
+    position: absolute;
+    display: inline;
+    z-index: 20;
+    margin-left: calc(50% - 10px);
+    margin-top: 25px;
+    /* visibility: hidden; */
+
+    color: black;
+    text-decoration: none;
+    font-family: Roboto;
+    font-size: 400;
+    text-transform: uppercase;
+    opacity: 0.7;
 }

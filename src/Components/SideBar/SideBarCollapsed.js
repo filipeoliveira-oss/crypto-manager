@@ -1,39 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import UseSwitchesCustom from '../ToggleTheme/ToggleTheme';
 import './SideBarCollapsed.css'
 
 
 function SideBar(){
+
+    const [isActive, setActive] = useState("true");
+
+    const handleToggle = () => {
+        setActive(!isActive);
+    };
+
     return(
         <>
-            <div className='sideBar'>
+            <div className={`sideBar${isActive ? "" : "--active"}`}>
 
-                <div className='profile'>
+                <div className={`profile${isActive ? "" : "--active"}`}>
                     <h3>FG</h3>
-                    <h1 className='expand' >{'>'}</h1>
+                    <h1 className={`expand${isActive ? "" : "--active"}`} onClick= {handleToggle}>{'>'}</h1>
+                </div>
+
+                <div>
+                    <button className={`search${isActive ? "" : "--active"}`} placeholder='teste'><img className='searchImg' src={require('../../Assets/search.png')} alt='search'/> <p>buscar</p></button>
+                   
                 </div>
 
                 <div >
-                    <button className='search'><img src={require('../../Assets/search.png')} alt='search'/></button>
+                    <button className={`home${isActive ? "" : "--active"}`}><img className='homeImg' src={require('../../Assets/home.png')} alt='home'/> <p>home</p></button>
                 </div>
 
                 <div >
-                    <button className='home'><img src={require('../../Assets/home.png')} alt='home'/></button>
+                    <button className={`table${isActive ? "" : "--active"}`}><img className='tableImg' src={require('../../Assets/table.png')} alt='crypto'/> <p>ativos</p></button>
                 </div>
 
                 <div >
-                    <button className='table'><img src={require('../../Assets/table.png')} alt='crypto'/></button>
+                    <button className={`logout${isActive ? "" : "--active"}`}><img className='logoutImg' src={require('../../Assets/logout.png')} alt='logout'/> <p>sair</p></button>
                 </div>
 
                 <div >
-                    <button className='logout'><img src={require('../../Assets/logout.png')} alt='logout'/></button>
-                </div>
-
-                <div >
-                    <UseSwitchesCustom className='toggle'/>
+                    <UseSwitchesCustom className={`toggle${isActive ? "" : "--active"}`}/>
                 </div>
                 
             </div>
+
         </>
     )
 }

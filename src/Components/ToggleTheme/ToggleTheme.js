@@ -19,6 +19,8 @@ const SwitchRoot = styled('span')`
   height: 40px;
   padding: 8px;
   top: 56px;
+  margin-left: calc(50% - 45px)
+
 `;
 
 const SwitchInput = styled('input')`
