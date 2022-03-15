@@ -13,7 +13,7 @@ function SideBar(){
     };
 
     return(
-        <>
+        <div className='sideBarContainer'>
 
             <div className={`sideBar${isActive ? "" : "--active"}`}>
 
@@ -45,7 +45,7 @@ function SideBar(){
                 
             </div>
 
-        </>
+        </div>
     )
 }
 

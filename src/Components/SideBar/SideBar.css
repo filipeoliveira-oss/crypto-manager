@@ -4,6 +4,9 @@
 li{
     list-style-type: none;
 }
+.sideBarContainer{
+    z-index: 200;
+}
 
  /* Closed side bar */
  .search p, .table p, .home p, .logout p{
