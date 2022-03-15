@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic'
 import './App.css';
 import Login from './Pages/Login/Login';
 import SideBar from './Components/SideBar/SideBar';

@@ -1,33 +1,26 @@
-import { display, style } from '@mui/system';
+import { useAlert } from 'react-alert'
 import React, { useState, useEffect } from 'react';
 import './Search.css'
 const axios = require('axios');
 
 function Search(){
-
     const [asset, setAsset] = useState('')
     const [req, setReq] = useState([])
-    const [assetList, setAssetList] = useState([])
-    const listUrl = 'https://api.coingecko.com/api/v3/coins/list'
     const url = `https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${asset}`
-    
-    useEffect(()=>{
-        axios.get(listUrl)
-        .then(function(response){
-            setAssetList(response.data)
-        })
-    }, [])
+    const alert = useAlert()
+
 
     function handleAsset(){
         const input = document.getElementsByClassName('inputAsset')
+
         setAsset(input.value)
-        //console.log(asset)
-        if(asset == ''){
-            alert('Por favor, digite um ativo válido')
+
+        if(asset == '' || asset == undefined){
+            alert.show('Por favor, digite um ativo')
         }else{
             axios.get(url)
             .then(function(response){
-                setReq(response.data)
+                setReq(response.data);
             })
         }
     }
@@ -35,8 +28,9 @@ function Search(){
     return(
         <>
             <div className='searchContainer'>
-                <input className='inputAsset' placeholder='Busque por um ativo' value={asset} onChange={e => setAsset(e.target.value)}></input>
+                <input className='inputAsset' placeholder='Busque por um ativo' onChange={e => setAsset(e.target.value)}></input>
                 <button className='sarchBtn'  onClick={handleAsset} type='submit' >Buscar</button>
+                <button className='assetsBtn'>?</button>
             </div>
             <hr width="320px" ></hr>
 

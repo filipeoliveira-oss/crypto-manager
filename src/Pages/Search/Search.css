@@ -12,24 +12,43 @@
     background-color: #E4E9F7;
     outline: none;
     text-transform: uppercase;
-    width: 173;
+    width: 173px;
     height: 17px;
 }
 .sarchBtn{
-    width: 173;
+    width: 76px;
     height: 35px;
     margin-top: -15px;
     margin-left: 10px;
     
-    background-color: #4E04FE;
-    color: white;
+    background-color: white;
+    color: #4102e0;
     font-weight: bold;
     cursor: pointer;
+    border: 1px solid #4E04FE;
 }
 .sarchBtn:hover{
     background-color: #4102e0;
     transition: all ease 0.3s;
+    color: white;
+}
+.assetsBtn{
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: 10px;
+    border-radius: 100%;
 
+    background-color: white;
+    color: #4102e0;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #4E04FE;
+}
+.assetsBtn:hover{
+    background-color: #4E04FE;
+    transition: all ease 0.3s;
+    color: white;
 }
 .infoContainer{
     display: flex;
