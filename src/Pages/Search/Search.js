@@ -1,14 +1,17 @@
 import { useAlert } from 'react-alert'
 import React, { useState, useEffect } from 'react';
 import './Search.css'
+import AssetSearch from '../../Components/AssetSearch/AssetSearch';
+
 const axios = require('axios');
 
 function Search(){
     const [asset, setAsset] = useState('')
     const [req, setReq] = useState([])
+    const [isModalVisible, setIsModalVisible] = useState(false)
     const url = `https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${asset}`
     const alert = useAlert()
-
+    
 
     function handleAsset(){
         const input = document.getElementsByClassName('inputAsset')
@@ -29,8 +32,13 @@ function Search(){
         <>
             <div className='searchContainer'>
                 <input className='inputAsset' placeholder='Busque por um ativo' onChange={e => setAsset(e.target.value)}></input>
-                <button className='sarchBtn'  onClick={handleAsset} type='submit' >Buscar</button>
-                <button className='assetsBtn'>?</button>
+                <button className='searchBtn'  onClick={handleAsset} type='submit' >Buscar</button>
+                <button className='assetsBtn' onClick={()=>{setIsModalVisible(true)}}>?</button>
+                {isModalVisible ? 
+                    <AssetSearch onClose={()=>setIsModalVisible(false)}/> 
+                    : 
+                    null
+                }
             </div>
             <hr width="320px" ></hr>
 

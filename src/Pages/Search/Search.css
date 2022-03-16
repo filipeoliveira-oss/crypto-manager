@@ -15,11 +15,12 @@
     width: 173px;
     height: 17px;
 }
-.sarchBtn{
+.searchBtn{
     width: 76px;
     height: 35px;
     margin-top: -15px;
     margin-left: 10px;
+    border-radius: 20px;
     
     background-color: white;
     color: #4102e0;
@@ -27,7 +28,7 @@
     cursor: pointer;
     border: 1px solid #4E04FE;
 }
-.sarchBtn:hover{
+.searchBtn:hover{
     background-color: #4102e0;
     transition: all ease 0.3s;
     color: white;

@@ -5,7 +5,7 @@ li{
     list-style-type: none;
 }
 .sideBarContainer{
-    z-index: 200;
+    z-index: 2;
 }
 
  /* Closed side bar */
@@ -73,7 +73,7 @@ a{
     align-items: center;
     text-decoration: none;
 }
-button{
+.search, .table , .home , .logout {
     width: 76px;
     height: 70px;
     border-radius: 20px;
@@ -85,7 +85,6 @@ button{
 
     transition: ease all 0.7s;
 }
-
 .searchImg{
     /* margin-left: 8px; */
     width: 34.97px;
@@ -140,7 +139,6 @@ button:hover{
     user-select: none;
 
     transition: ease all 0.7s;
-
     
 }
 .profile--active{
