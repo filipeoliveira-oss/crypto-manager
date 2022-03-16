@@ -2,7 +2,6 @@ import { useAlert } from 'react-alert'
 import React, { useState, useEffect } from 'react';
 import './Search.css'
 import AssetSearch from '../../Components/AssetSearch/AssetSearch';
-
 const axios = require('axios');
 
 function Search(){
@@ -33,7 +32,7 @@ function Search(){
             <div className='searchContainer'>
                 <input className='inputAsset' placeholder='Busque por um ativo' onChange={e => setAsset(e.target.value)}></input>
                 <button className='searchBtn'  onClick={handleAsset} type='submit' >Buscar</button>
-                <button className='assetsBtn' onClick={()=>{setIsModalVisible(true)}}>?</button>
+                <button className='assetsBtn' onClick={()=>{setIsModalVisible(true)}} title='Ver lista de todos os ativos'>?</button>
                 {isModalVisible ? 
                     <AssetSearch onClose={()=>setIsModalVisible(false)}/> 
                     : 

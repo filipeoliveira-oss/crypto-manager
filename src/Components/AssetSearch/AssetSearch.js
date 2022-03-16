@@ -39,7 +39,6 @@ function AssetSearch({ id ='modal',onClose = ()=>{}}){
                         })}
                     </table>
                 </div>
-                
             </div>  
         </div>
     )
