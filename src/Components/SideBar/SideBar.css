@@ -82,7 +82,7 @@ a{
 
     margin-top: 56px;
     margin-left: 11px;
-
+    cursor: pointer;
     transition: ease all 0.7s;
 }
 .searchImg{
