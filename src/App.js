@@ -6,6 +6,7 @@ import Home from './Pages/Home/Home';
 import Search from './Pages/Search/Search';
 import ReactTooltip from 'react-tooltip';
 import Loading from './Components/Loading/Loading';
+import AddAsset from './Components/AddAsset/AddAsset';
 
 
 function App() {

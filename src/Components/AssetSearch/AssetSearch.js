@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import './AssetSearch.css'
 import Loading from '../../Components/Loading/Loading';
 
+
 function AssetSearch({ id ='modal',onClose = ()=>{}}){
 
     const [assetList, setAssetList] = useState([{}])
     const listUrl = 'https://api.coingecko.com/api/v3/coins/list'
-    var size = assetList.length
 
     useEffect(()=>{
 
@@ -15,6 +15,7 @@ function AssetSearch({ id ='modal',onClose = ()=>{}}){
         .then(function(response){
             // setAssetList((assetList) => assetList = response.data);
             setAssetList(response.data)
+            console.log()
         })
     }, [])
     

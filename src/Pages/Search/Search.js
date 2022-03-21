@@ -2,18 +2,18 @@ import { useAlert } from 'react-alert'
 import React, { useState, useEffect } from 'react';
 import './Search.css'
 import AssetSearch from '../../Components/AssetSearch/AssetSearch';
-
+import AddAsset from '../../Components/AddAsset/AddAsset';
 const axios = require('axios');
 
 function Search(){
     const [asset, setAsset] = useState('')
     const [req, setReq] = useState([])
     const [isModalVisible, setIsModalVisible] = useState(false)
+    const [isAddModalVisible, setIsAddModalVisible] = useState(false)
     const url = `https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${asset}`
     const alert = useAlert()
     
-
-    function handleAsset(){
+    function HandleAsset(){
 
         if(asset == '' || asset == undefined){
             alert.show('Por favor, digite um ativo')
@@ -25,14 +25,22 @@ function Search(){
         }
     }
 
+
     return(
         <>
             <div className='searchContainer'>
                 <input className='inputAsset' placeholder='Busque por um ativo' onChange={e => setAsset(e.target.value)}></input>
-                <button className='searchBtn'  onClick={handleAsset} type='submit'>Buscar</button>
-                <button className='assetsBtn' onClick={()=>{setIsModalVisible(true)}} title='Ver lista de todos os ativos'>?</button>
+                <button className='searchBtn'  onClick={HandleAsset} type='submit'>Buscar</button>
+                <button className='assetsBtn' onClick={()=>{setIsModalVisible(true)}} data-tip="Ver lista de todos os ativos">?</button>
+                <button className='addAsset' data-hover='Adicionar ativo à lista'style={{ visibility: req == ''? 'hidden': 'visible'}} onClick={()=>{setIsAddModalVisible(true)}}>+</button>
                 {isModalVisible ? 
                     <AssetSearch onClose={()=>setIsModalVisible(false)}/> 
+                    : 
+                    null
+                }
+                {isAddModalVisible ? 
+                    <AddAsset
+                    onClose={()=>setIsAddModalVisible(false)}/> 
                     : 
                     null
                 }
