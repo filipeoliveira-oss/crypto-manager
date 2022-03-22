@@ -13,9 +13,8 @@ function AssetSearch({ id ='modal',onClose = ()=>{}}){
 
         axios.get(listUrl)
         .then(function(response){
-            // setAssetList((assetList) => assetList = response.data);
             setAssetList(response.data)
-            console.log()
+            console.log(assetList)
         })
     }, [])
     

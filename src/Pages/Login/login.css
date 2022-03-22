@@ -167,7 +167,20 @@
     cursor: pointer;
 
 }
+/* .signin p{
+    display: flex;
+    position: absolute;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
 
+
+    justify-content: center;
+    margin-top: 95px;
+    color: #FFFFFF;
+} */
 .account{
     position: absolute;
     width: 341px;

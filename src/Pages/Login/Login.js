@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './login.css'
-
+import { Link } from "react-router-dom";
 
 function Login(){
 
@@ -15,9 +15,7 @@ function Login(){
             setUsername((username) => username ='');
             setPassword((password) => password = '');
          }
-         event.preventDefault()
     }
-
 
     return(
         <>
@@ -37,9 +35,11 @@ function Login(){
                     <img className='passwordImg' src={require('../../Assets/locker.png')} alt=''/>
 
                     <label className='forgotPassword'>Esqueceu sua senha?</label>
-
-                    <button className='signin' type='submit' onClick={handleLogin}>Logar</button>
-
+                   
+                     <Link to='/home'>
+                        <button className='signin' type='submit' onClick={handleLogin}>Entrar</button>
+                     </Link>
+                
                     <label className='account'>Não tem uma conta? <span>Clique aqui!</span></label>
                 </form>
 
