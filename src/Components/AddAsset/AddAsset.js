@@ -3,12 +3,10 @@ import './AddAsset.css'
 
 function AddAsset({ id ='modal',onClose = ()=>{}}){
 
-    const [assetList, setAssetList] = useState([{}])
-    const listUrl = 'https://api.coingecko.com/api/v3/coins/list'
-
     const handleOutSideClick = (e) =>{
         if(e.target.id === id) onClose();
     }
+    
     return(  
         <div id={id} className='modal' onClick={handleOutSideClick}>
             <div className='containerList'>

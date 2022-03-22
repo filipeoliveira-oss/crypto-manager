@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { textAlign } from "@mui/system";
 
 const loadingContainer = {
   width: "2rem",
