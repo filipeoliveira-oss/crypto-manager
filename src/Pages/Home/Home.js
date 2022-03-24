@@ -6,7 +6,7 @@ const axios = require('axios');
 function Home(){
 
     const [articles, setArticles] = useState([{}]);
-    const articlesUrl = 'http://api.mediastack.com/v1/news?access_key=c9a04d4270c73ef0d1b83d2b56dff60a&countries=br&sort=popularity&keywords=cripto'
+    const articlesUrl = 'http://api.mediastack.com/v1/news?access_key=c9a04d4270c73ef0d1b83d2b56dff60a&countries=br&sort=published_desc&limit=15&keywords=cripto'
     
     useEffect(()=>{
 
@@ -16,6 +16,7 @@ function Home(){
             console.log(response.data.data)
         })
     }, [])
+
 
     return(
         <div className='homeContent'>  
@@ -29,10 +30,10 @@ function Home(){
                     {articles.map((item)=>{
                         return(
                             <>
-                            <a className='newsItem' key={item.published_at} href={item.url}>
+                            <a className='newsItem' key={item.published_at} href={item.url} target="_blank">
                                 <h3 className='title'>{item.title}</h3>
-                                <h3 className='description'>{item.description}</h3>
-                                <h3 className='info'>Publicado por {item.source} / {item.author} em {item.published_at}</h3>
+                                <p className='description'>{item.description.split(' appeared first on InfoMoney')}</p>
+                                <h3 className='info'>Publicado por {item.source} / {item.author} em {item.published_at.toString().slice(0, 10).split('-').reverse().join('/')} às {item.published_at.toString().slice(11, 19)}</h3>
                             </a>
                             <hr/>
                             </>

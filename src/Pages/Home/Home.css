@@ -40,3 +40,7 @@ a{
 .description, .info{
     margin-top: -1px;
 }
+.description{
+    font-weight: 400;
+    font-size: 18px;
+}
