@@ -38,6 +38,7 @@
     margin-bottom: 15px;
 }
 .addAssetList{
+    text-transform: uppercase;
     width: 350px;
     height: 25px;
     margin-left: 25px;

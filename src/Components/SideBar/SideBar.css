@@ -240,7 +240,6 @@ button:hover{
     z-index: 20;
     margin-left: calc(50% - 10px);
     margin-top: 25px;
-    /* visibility: hidden; */
 
     color: black;
     text-decoration: none;
