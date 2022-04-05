@@ -1,9 +1,21 @@
-import React, { useState} from 'react';
+import React, { useState, useContext} from 'react';
 import AddAsset from '../../Components/AddAsset/AddAsset';
+import { AssetListContext } from '../../Contexts/AssetList'
 import './Table.css'
+
 
 function Table(){
 	const [isAddModalVisible, setIsAddModalVisible] = useState(false)
+
+	const {assetTable} = useContext(AssetListContext)
+
+	function getLP(item){
+		if (item.action == 'compra') {
+			return (item.current * item.quantity)  - (item.value * item.quantity)
+		}else if(item.action == 'venda'){
+			return  (item.value * item.quantity) -  (item.current * item.quantity)
+		}
+	}
 
     return(
         <>
@@ -20,78 +32,18 @@ function Table(){
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="tableRow">
-								<td class="tableColumn" >BITCOIN</td>
-								<td class="tableColumn" >COMPRA</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >11</td>
-								<td class="tableColumn ">10</td>
-							</tr>
-
-							<tr class="tableRow">
-                                <td class="tableColumn" >BITCOIN</td>
-								<td class="tableColumn" >COMPRA</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >11</td>
-								<td class="tableColumn ">10</td>
-							</tr>
-
-							<tr class="tableRow">
-                            <td class="tableColumn" >BITCOIN</td>
-								<td class="tableColumn" >COMPRA</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >11</td>
-								<td class="tableColumn ">10</td>
-
-							</tr>
-
-							<tr class="tableRow">
-                            <td class="tableColumn" >BITCOIN</td>
-								<td class="tableColumn" >COMPRA</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >11</td>
-								<td class="tableColumn ">10</td>
-							</tr>
-
-							<tr class="tableRow">
-                            <td class="tableColumn" >BITCOIN</td>
-								<td class="tableColumn" >COMPRA</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >11</td>
-								<td class="tableColumn ">10</td>
-							</tr>
-
-							<tr class="tableRow">
-                            <td class="tableColumn" >BITCOIN</td>
-								<td class="tableColumn" >COMPRA</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >11</td>
-								<td class="tableColumn ">10</td>
-							</tr>
-
-							<tr class="tableRow">
-                                <td class="tableColumn" >BITCOIN</td>
-								<td class="tableColumn" >COMPRA</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >11</td>
-								<td class="tableColumn ">10</td>
-							</tr>
-
-							<tr class="tableRow">
-                               <td class="tableColumn" >ETHEREUM</td>
-								<td class="tableColumn" >COMPRA</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >10</td>
-								<td class="tableColumn" >11</td>
-								<td class="tableColumn ">10</td>
-							</tr>
+							{assetTable.map((item)=>{
+								return(
+									<tr class="tableRow" key={item.id}>
+										<td class="tableColumn" >{item.asset}</td>
+										<td class="tableColumn" >{item.action}</td>
+										<td class="tableColumn" >{item.value}</td>
+										<td class="tableColumn" >{item.quantity}</td>
+										<td class="tableColumn" >{item.current}</td>
+										<td class="tableColumn ">{getLP(item)}</td>
+									</tr>
+								)
+							})}
 						</tbody>
 					</table>
 					<button className='addTableAssetBtn' onClick={()=>{setIsAddModalVisible(true)}}>Adicionar novo ativo</button> 

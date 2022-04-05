@@ -74,6 +74,8 @@ a{
     text-decoration: none;
 }
 .search, .table , .home , .logout {
+    position: inherit;
+    display: flex;
     width: 76px;
     height: 70px;
     border-radius: 20px;
@@ -86,18 +88,26 @@ a{
     transition: ease all 0.7s;
 }
 .searchImg{
-    /* margin-left: 8px; */
+    margin-left: calc(38px - 23.5px);
+    margin-top: calc(35px - 20.5px);
     width: 34.97px;
     height: 40.94px;
     transform: rotate(-0.04deg);
+    position: absolute;
 }
 .homeImg{
     width: 57px;
     height: 57px;
+    position: absolute;
+    margin-left: 4px;
+    margin-top: 4px;
 }
 .tableImg{
     width: 48px;
     height: 50px;
+    position: absolute;
+    margin-left: 8px;
+    margin-top: 8px;
 }
 button:hover{
     -webkit-filter: brightness(93%);   
@@ -112,7 +122,7 @@ button:hover{
     background: #E7E5E5;
 
     margin-top: 300px;
-    margin-left: calc(50% - 38px);
+    /* margin-left: calc(50% - 38px); */
 
     transition: ease all 0.3s;
 }
@@ -197,29 +207,27 @@ button:hover{
 }
 .search--active img{
     
-    width: 34.97px;
+    /* width: 34.97px;
     height: 40.94px;
-    transform: rotate(-0.04deg);
+    transform: rotate(-0.04deg); */
     
-    position: absolute; 
-    left: 19px;
-    padding: 12px;
+    /* position: absolute;  */
+
+    left: 17px;
+
+    /* padding: 12px; */
 }
 .home--active img{
-    width: 57px;
-    height: 57px;
+    /* width: 57px;
+    height: 57px; */
 
-    position: absolute; 
-    left: 21px;
-    padding-top: 4px;
+    /* position: absolute;  */
+    left: 17px;
+    /* padding-top: 4px; */
 }
 .table--active img{
     width: 48px;
     height: 50px;
-
-    position: absolute; 
-    left: 25px;
-    padding-top: 8px;
 }
 .logout--active{
     display: flex;
