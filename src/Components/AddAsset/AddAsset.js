@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { AssetListContext } from '../../Contexts/AssetList'
 import './AddAsset.css'
@@ -15,6 +15,12 @@ function AddAsset({ id = 'modal', onClose = () => { } }) {
     const [quantityAssetList, setQuantityAssetList] = useState(null)
     const [typeAssetList, setTypeAssetList] = useState(null)
 
+    useEffect(()=>{
+        
+        localStorage.setItem("asset", JSON.stringify(assetTable));
+
+    }, )
+
     function handleAdd(e) {
         if (addAssetList != null && valueAssetList != null &&
             quantityAssetList != null &&
@@ -27,10 +33,12 @@ function AddAsset({ id = 'modal', onClose = () => { } }) {
                 quantity: quantityAssetList,
                 current: '30'
             }])
-            e.preventDefault();
         }
 
+        e.preventDefault()
+
     }
+
     return (
         <div id={id} className='modal' onClick={handleOutSideClick}>
             <div className='containerList'>

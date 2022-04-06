@@ -13,22 +13,24 @@ function AssetListProvider ({children}){
 	}
     const [assetTable, setAssetTable ] = useState(
 		[
-		{
-			id: id,
-			asset: 'bitcoin',
-			action:'compra',
-			value: '10',
-			quantity: '10',
-			current: '20',
-		},
-		{
-			id: id,
-			asset: 'ethereum',
-			action:'venda',
-			value: '20',
-			quantity: '10',
-			current: '10',
-		}])
+		// {
+		// 	id: id,
+		// 	asset: 'bitcoin',
+		// 	action:'compra',
+		// 	value: '10',
+		// 	quantity: '10',
+		// 	current: '20',
+		// },
+		// {
+		// 	id: id,
+		// 	asset: 'ethereum',
+		// 	action:'venda',
+		// 	value: '20',
+		// 	quantity: '10',
+		// 	current: '10',
+		// }
+	
+	])
 
     return(
         <AssetListContext.Provider value={{assetTable, setAssetTable}}>

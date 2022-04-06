@@ -9,6 +9,7 @@ function Table(){
 
 	const {assetTable} = useContext(AssetListContext)
 
+
 	function getLP(item){
 		if (item.action == 'compra') {
 			return (item.current * item.quantity)  - (item.value * item.quantity)
