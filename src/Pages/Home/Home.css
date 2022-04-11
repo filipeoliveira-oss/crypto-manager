@@ -1,10 +1,10 @@
-.homeContent{
+/* .homeContent{
     margin-left: 150px;
     display: flex;
     flex-direction: column;
     margin-top: 25px;
-}
-.news{
+} */
+/* .news{
     position: absolute;
     width: 80%;
     height: 803px;
@@ -19,8 +19,8 @@
     box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
 
     overflow: auto;
-}
-a{
+} */
+/* a{
     text-decoration: none;
     color: black;
 }
@@ -33,10 +33,10 @@ a{
     margin-left: 15px;
     margin-right: 15px;
     gap: 0;
-}
-.newsItem:hover{
+} */
+/* .newsItem:hover{
     background-color: #adb7d3;
-}
+} */
 .description, .info{
     margin-top: -1px;
 }

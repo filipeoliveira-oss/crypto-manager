@@ -1,16 +1,11 @@
-import React, { useState, createContext,  } from "react";
+import React, { useState, createContext, useEffect } from "react";
 
 
 export const AssetListContext = createContext({})
 
 function AssetListProvider ({children}){
 
-	const [id, setId] = useState(1)
 
-	function idIncrement(){
-		setId = id + 1
-
-	}
     const [assetTable, setAssetTable ] = useState(
 		[
 		// {
@@ -32,6 +27,12 @@ function AssetListProvider ({children}){
 	
 	])
 
+	useEffect(()=>{
+		if(localStorage.getItem('asset')){
+			var AssetList = localStorage.getItem('asset')
+			setAssetTable(JSON.parse(AssetList))
+		}
+	}, [])
     return(
         <AssetListContext.Provider value={{assetTable, setAssetTable}}>
             {children}

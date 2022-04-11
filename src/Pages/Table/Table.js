@@ -1,10 +1,124 @@
 import React, { useState, useContext} from 'react';
 import AddAsset from '../../Components/AddAsset/AddAsset';
 import { AssetListContext } from '../../Contexts/AssetList'
+import styled from 'styled-components';
 import './Table.css'
 
 
 function Table(){
+
+	const TableContainer = styled.div`
+		position: fixed;
+		width: 42.7%;
+		height: 90%;
+		margin-left: 15%;
+		margin-top: 2.5%;
+		border-radius: 16px;
+		overflow: hidden;
+		background: #7918f2;
+		background: ${props => props.theme.tableContainerBGCWebkit};
+		background: ${props => props.theme.tableContainerBGCOLiner};
+		background: ${props => props.theme.tableContainerBGCMozLinear};
+		background: ${props => props.theme.tableContainerBGCLinearGradient};
+	`
+
+	const Table = styled.table`
+		background-color: transparent;
+		width: 100%;
+
+		&.tableRow{
+			background-color: ${props => props.theme.tableRowHoverTd};
+		}
+
+	`
+
+	const TableTh = styled.th`
+	font-family: Montserrat-Medium;
+	font-size: 12px;
+	color: ${props => props.theme.tableWhite};
+	line-height: 1.4;
+	text-transform: uppercase;
+	
+	background-color: ${props => props.theme.tableContainerTh};
+	`
+
+	const TableColumTd = styled.td`
+		font-family: Montserrat-Regular;
+		font-size: 14px;
+		color: ${props => props.theme.tableWhite};
+		line-height: 1.4;
+
+			&:hover{
+				background-color: ${props => props.theme.tableRowTdHover};
+			}
+	`
+
+	const AddTableAssetBtn = styled.button`
+		display: flex;
+
+		width: 422px;
+		height: 35px;
+		margin-top: 20px;
+		margin-bottom: 1px;
+		align-items: center;
+		justify-content: center;
+		border-radius: 30px;
+		margin-left: calc(50% - 211px);
+
+		background-color: ${props => props.theme.tableWhite};
+		color: ${props => props.theme.searchBtnColor};
+		font-weight: bold;
+		cursor: pointer;
+		border: 1px solid ${props => props.theme.tableAddTableBorder};
+
+		transition: all ease 0.3s;
+		user-select: none;
+
+		&:hover{
+			background-color: ${props => props.theme.tableWhiteSmoke};
+
+			  transition: all ease 0.3s;
+		}
+	`
+	const WidgetAssetInfo = styled.div`
+		display: absolute;
+		position:fixed;
+		margin-left: 70%;
+		margin-top: 10%;
+		width: 500px;
+		height: 236px;
+		color: ${props => props.theme.tableWhiteSmoke};
+
+		background: ${props => props.theme.tableWidgetBGC};
+		border-radius: 16px;
+		box-shadow: 0 4px 30px ${props => props.theme.tableBoxShadow};
+		backdrop-filter: blur(4.3px);
+		-webkit-backdrop-filter: blur(4.3px);
+		border: 1px solid ${props => props.theme.tableWidgetBorder};
+	`
+	
+	const WidgetAssetConversor = styled.div`
+		display: flex;
+		flex-direction: column;
+		position:fixed;
+		margin-left: 70%;
+		margin-top: 25%;
+		width: 500px;
+		height: 236px;
+		color: ${props => props.theme.tableWhiteSmoke};
+
+		background: ${props => props.theme.tableWidgetBGC};
+		border-radius: 16px;
+		box-shadow: 0 4px 30px ${props => props.theme.tableBoxShadow};
+		backdrop-filter: blur(4.3px);
+		-webkit-backdrop-filter: blur(4.3px);
+		border: 1px solid ${props => props.theme.tableWidgetBorder};
+
+		justify-content: center;
+		align-items: center;
+
+	`
+
 	const [isAddModalVisible, setIsAddModalVisible] = useState(false)
 
 	const {assetTable} = useContext(AssetListContext)
@@ -20,36 +134,36 @@ function Table(){
 
     return(
         <>
-           <div class="tableContainer">
-					<table >
+           <TableContainer class="tableContainer">
+					<Table>
 						<thead>
 							<tr class="tableRow">
-								<th class="tableColumn">Ativo</th>
-								<th class="tableColumn">Movimento</th>
-								<th class="tableColumn">Valor</th>
-								<th class="tableColumn">Quantidade</th>
-								<th class="tableColumn">Valor atual</th>
-								<th class="tableColumn ">L/P</th>
+								<TableTh class="tableColumn">Ativo</TableTh>
+								<TableTh class="tableColumn">Movimento</TableTh>
+								<TableTh class="tableColumn">Valor</TableTh>
+								<TableTh class="tableColumn">Quantidade</TableTh>
+								<TableTh class="tableColumn">Valor atual</TableTh>
+								<TableTh class="tableColumn ">L/P</TableTh>
 							</tr>
 						</thead>
 						<tbody>
 							{assetTable.map((item)=>{
 								return(
 									<tr class="tableRow" key={item.id}>
-										<td class="tableColumn" >{item.asset}</td>
-										<td class="tableColumn" >{item.action}</td>
-										<td class="tableColumn" >{item.value}</td>
-										<td class="tableColumn" >{item.quantity}</td>
-										<td class="tableColumn" >{item.current}</td>
-										<td class="tableColumn ">{getLP(item)}</td>
+										<TableColumTd class="tableColumnTd" >{item.asset}</TableColumTd>
+										<TableColumTd class="tableColumnTd" >{item.action}</TableColumTd>
+										<TableColumTd class="tableColumnTd" >{item.value}</TableColumTd>
+										<TableColumTd class="tableColumnTd" >{item.quantity}</TableColumTd>
+										<TableColumTd class="tableColumnTd" >{item.current}</TableColumTd>
+										<TableColumTd class="tableColumnTd">{getLP(item)}</TableColumTd>
 									</tr>
 								)
 							})}
 						</tbody>
-					</table>
-					<button className='addTableAssetBtn' onClick={()=>{setIsAddModalVisible(true)}}>Adicionar novo ativo</button> 
+					</Table>
+					<AddTableAssetBtn className='addTableAssetBtn' onClick={()=>{setIsAddModalVisible(true)}}>Adicionar novo ativo</AddTableAssetBtn> 
 					
-				</div>
+				</TableContainer>
 
 				{isAddModalVisible ? 
                     <AddAsset
@@ -58,7 +172,7 @@ function Table(){
                     null
                 }
 				
-				<div className='widgetAssetInfo'>
+				<WidgetAssetInfo className='widgetAssetInfo'>
 					<img className='widgetAssetInfo--image'></img>
 					<div className='widgetAssetInfo--values'>
 						<h4>PRICE</h4>
@@ -86,9 +200,9 @@ function Table(){
 							</tbody>
 						</table>
 					</div>
-				</div>
+				</WidgetAssetInfo>
 
-				<div className='widgetAssetConversor'>
+				<WidgetAssetConversor className='widgetAssetConversor'>
 					<div className='widgetAssetConversor--asset'>
 						<img></img>
 						<input></input>
@@ -97,7 +211,7 @@ function Table(){
 						<h3>BRL</h3>
 						<input></input>
 					</div>
-				</div>
+				</WidgetAssetConversor>
         </>
     )
 }

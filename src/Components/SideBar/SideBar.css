@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
-
 li{
     list-style-type: none;
 }
@@ -14,8 +13,9 @@ li{
     visibility: hidden;
     z-index: 20;
  }
+ 
 
-.sideBar{
+/* .sideBar{
     position: absolute;
 
     width: 98px;
@@ -28,8 +28,8 @@ li{
     user-select: none;
 
     transition: ease all 0.7s;
-}
-.profile{
+} */
+/* .profile{
     
     height: 57px;
     width: 61px;
@@ -37,7 +37,7 @@ li{
     
     background: #7064f7;
     border-radius: 20px;
-}
+} */
 .profile h3{
     display: flex;
     
@@ -51,7 +51,7 @@ li{
     justify-content: center;
     padding-top: calc(50% - 25px);
 }
-.expand{
+/* .expand{
     
     width: 25px;
     height: 26px;
@@ -66,14 +66,14 @@ li{
     margin-top: -70px;
 
     transition: ease all 0.7s;
-}
+} */
 a{
     display: flex;
     gap: 1rem;
     align-items: center;
     text-decoration: none;
 }
-.search, .table , .home , .logout {
+/* .search, .table , .home , .logout {
     position: inherit;
     display: flex;
     width: 76px;
@@ -86,7 +86,7 @@ a{
     margin-left: 11px;
     cursor: pointer;
     transition: ease all 0.7s;
-}
+} */
 .searchImg{
     margin-left: calc(38px - 23.5px);
     margin-top: calc(35px - 20.5px);
@@ -112,7 +112,7 @@ a{
 button:hover{
     -webkit-filter: brightness(93%);   
 }
-.logout{
+/* .logout{
     position: inherit;
     display: flex;
     width: 76px;
@@ -122,10 +122,10 @@ button:hover{
     background: #E7E5E5;
 
     margin-top: 300px;
-    /* margin-left: calc(50% - 38px); */
+    /* margin-left: calc(50% - 38px); 
 
     transition: ease all 0.3s;
-}
+} */
 .logoutImg{
     position: absolute;
     width: 57px;
@@ -138,7 +138,7 @@ button:hover{
 
 /* open side bar */
 
-.sideBar--active{
+/* .sideBar--active{
     position: absolute;
     width: 230px;
     height: 100%;
@@ -150,8 +150,8 @@ button:hover{
 
     transition: ease all 0.7s;
     
-}
-.profile--active{
+} */
+/* .profile--active{
     height: 57px;
     width: 61px;
     margin-left: calc(50% - 30.5px);
@@ -172,9 +172,9 @@ button:hover{
 
     justify-content: center;
     padding-top: calc(50% - 25px);
-}
+} */
 
-.expand--active{
+/* .expand--active{
     
     width: 25px;
     height: 26px;
@@ -191,7 +191,7 @@ button:hover{
     transform: rotateY(180deg);
 
     transition: ease all 0.7s;
-}
+} */
 .search--active, .table--active, .home--active{
     display: flex;
     width: 200px;
@@ -229,7 +229,7 @@ button:hover{
     width: 48px;
     height: 50px;
 }
-.logout--active{
+/* .logout--active{
     display: flex;
     width: 200px;
     height: 70px;
@@ -241,7 +241,7 @@ button:hover{
     margin-left: 11px;
 
     transition: ease all 0.7s;
-}
+} */
 .search--active p, .table--active p, .home--active p, .logout--active p{
     position: absolute;
     display: inline;

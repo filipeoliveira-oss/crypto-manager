@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { transitions, positions, types, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
+
+
+
 
 
   const options = {
@@ -12,6 +15,9 @@ import AlertTemplate from 'react-alert-template-basic'
     type: types.ERROR,
     transition: transitions.SCALE,
   }
+
+
+
 
 ReactDOM.render(  
  

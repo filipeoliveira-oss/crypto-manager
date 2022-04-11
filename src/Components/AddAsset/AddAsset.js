@@ -1,19 +1,23 @@
 import React, { useContext, useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import { AssetListContext } from '../../Contexts/AssetList'
+import nextId , { setPrefix } from "react-id-generator";
 import './AddAsset.css'
 
 function AddAsset({ id = 'modal', onClose = () => { } }) {
 
-    const handleOutSideClick = (e) => {
-        if (e.target.id === id) onClose();
-    }
+    setPrefix('')
+    var assetId = nextId()
 
     const { assetTable, setAssetTable } = useContext(AssetListContext)
     const [addAssetList, setAddAssetList] = useState(null)
     const [valueAssetList, setValueAssetList] = useState(null)
     const [quantityAssetList, setQuantityAssetList] = useState(null)
     const [typeAssetList, setTypeAssetList] = useState(null)
+
+
+    const handleOutSideClick = (e) => {
+        if (e.target.id === id) onClose();
+    }
 
     useEffect(()=>{
         
@@ -26,7 +30,7 @@ function AddAsset({ id = 'modal', onClose = () => { } }) {
             quantityAssetList != null &&
             typeAssetList != null) {
             setAssetTable((assetTable) => [...assetTable, {
-                id: id,
+                id: assetId,
                 asset: addAssetList,
                 action: typeAssetList,
                 value: valueAssetList,
@@ -34,7 +38,6 @@ function AddAsset({ id = 'modal', onClose = () => { } }) {
                 current: '30'
             }])
         }
-
         e.preventDefault()
 
     }
