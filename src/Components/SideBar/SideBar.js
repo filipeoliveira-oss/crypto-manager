@@ -4,9 +4,7 @@ import UseSwitchesCustom from '../ToggleTheme/ToggleTheme';
 import { Link } from "react-router-dom";
 import './SideBar.css'
 
-function SideBar(props){
-
-    const Sidebar = styled.div`
+const Sidebar = styled.div`
     position: absolute;
 
     width: 98px;
@@ -153,17 +151,23 @@ function SideBar(props){
             }
     `
 
+function SideBar(props){
+    
+
     const [isActive, setActive] = useState('false');
 
     const handleToggle = () => {
         setActive(!isActive);    
-               
     };
 
     function changeTheme(){
-        if(props.theme == 'light'){
+        var selectedTheme = localStorage.getItem('themeSelected')
+        
+        if(selectedTheme == 'light' || selectedTheme == null){
+            localStorage.setItem('themeSelected', 'dark')
             props.setTheme('dark')
         }else{
+            localStorage.setItem('themeSelected', 'light')
             props.setTheme('light')
         }
     }

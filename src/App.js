@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from 'styled-components';
@@ -97,12 +97,21 @@ const themes={
 const GlobalStyle = createGlobalStyle`
 body {
   background-color: ${props => props.theme.appBGC};
-  
+  transition: all .7s ease
 }
 `
 
 function App() {
   const [theme, setTheme] = useState('light')
+
+  useEffect(()=>{
+    var theme = localStorage.getItem('themeSelected')
+
+    if (theme){
+      setTheme(theme)
+    }
+  }, [])
+
 
   return (
     <ThemeProvider theme={themes[theme]}>
