@@ -9,12 +9,13 @@ const axios = require('axios');
 
 
 const InputAsset = styled.input`
-border: none;
-background-color: ${props=> props.theme.searchInput};
-outline: none;
-text-transform: uppercase;
-width: 173px;
-height: 17px;
+    border: none;
+    background-color: ${props=> props.theme.searchInput};
+    outline: none;
+    text-transform: uppercase;
+    width: 173px;
+    height: 17px;
+    color: ${props=> props.theme.searchInputText}
 
 `
 const SearchBtn = styled.button`
@@ -153,11 +154,12 @@ function Search(){
                 }
                 {isAddModalVisible ? 
                     <AddAsset
-                    onClose={()=>setIsAddModalVisible(false)}/> 
+                    onClose={()=>setIsAddModalVisible(false)} useAsset={asset}/> 
                     : 
                     null
                 }
             </div>
+
             <hr width="320px" ></hr>
 
             <InfoContainer className='infoContainer'>

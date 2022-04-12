@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AssetListContext } from '../../Contexts/AssetList'
 import nextId , { setPrefix } from "react-id-generator";
+import { useAlert, positions} from 'react-alert';
 import './AddAsset.css'
 
-function AddAsset({ id = 'modal', onClose = () => { } }) {
+function AddAsset({ id = 'modal', onClose = () => { }, useAsset = () => {} }) {
 
     setPrefix('')
     var assetId = nextId()
@@ -13,7 +14,7 @@ function AddAsset({ id = 'modal', onClose = () => { } }) {
     const [valueAssetList, setValueAssetList] = useState(null)
     const [quantityAssetList, setQuantityAssetList] = useState(null)
     const [typeAssetList, setTypeAssetList] = useState(null)
-
+    const alert = useAlert()
 
     const handleOutSideClick = (e) => {
         if (e.target.id === id) onClose();
@@ -25,7 +26,9 @@ function AddAsset({ id = 'modal', onClose = () => { } }) {
 
     }, )
 
+
     function handleAdd(e) {
+
         if (addAssetList != null && valueAssetList != null &&
             quantityAssetList != null &&
             typeAssetList != null) {
@@ -37,6 +40,11 @@ function AddAsset({ id = 'modal', onClose = () => { } }) {
                 quantity: quantityAssetList,
                 current: '30'
             }])
+
+            alert.success('Ativo adicionado',{
+                timeout: 2000,
+                position: positions.TOP_CENTER
+            })
         }
         e.preventDefault()
 

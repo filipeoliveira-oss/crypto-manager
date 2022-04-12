@@ -69,7 +69,6 @@ function Home(){
         axios.get(articlesUrl)
         .then(function(response){
             setArticles(response.data.data)
-            console.log(response.data.data)
         })
     }, [])
 

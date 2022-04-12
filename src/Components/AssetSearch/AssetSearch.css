@@ -46,6 +46,7 @@
     transform: rotate(-45deg);
 }
 .assetTable {
+    margin-top: 15px;
     width: 100%;
 }
 .content{

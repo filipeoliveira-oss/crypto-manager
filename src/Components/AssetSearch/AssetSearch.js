@@ -7,6 +7,7 @@ import Loading from '../../Components/Loading/Loading';
 function AssetSearch({ id ='modal',onClose = ()=>{}}){
 
     const [assetList, setAssetList] = useState([{}])
+    const [filter, setFilter] = useState('')
     const listUrl = 'https://api.coingecko.com/api/v3/coins/list'
 
     useEffect(()=>{
@@ -22,6 +23,12 @@ function AssetSearch({ id ='modal',onClose = ()=>{}}){
         if(e.target.id === id) onClose();
     }
     
+    function hanledChange(e){
+        setFilter(e.target.value)
+
+        // setAssetList(newList)
+    }
+
     return(
         
         <div id={id} className='modal' onClick={handleOutSideClick}>
@@ -31,6 +38,7 @@ function AssetSearch({ id ='modal',onClose = ()=>{}}){
                     {assetList.length == 1 ? <Loading/>
                     :
                     <table className='assetTable'>
+                        <input onChange={(e) => hanledChange(e)}></input>
                         <tbody>
                             <tr>
                                 <th className='tableName'>Nome</th>
