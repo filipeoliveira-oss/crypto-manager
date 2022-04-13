@@ -24,7 +24,8 @@ background: ${props => props.theme.tableContainerBGCLinearGradient};
 const TableTag = styled.table`
 background-color: transparent;
 width: 100%;
-
+text-align: center;
+text-transform: uppercase;
 &.tableRow{
 	background-color: ${props => props.theme.tableRowHoverTd};
 }
@@ -131,7 +132,7 @@ function Table() {
 	const { assetTable } = useContext(AssetListContext)
 	const [assetToCoin, setAssetToCoin] = useState(0)
 	const [coinToAsset, setCoinToAsset] = useState(0)
-
+	const [selectedAsset, setSelectedAsset] = useState('')
 
 	function getLP(item) {
 		if (item.action == 'compra') {
@@ -141,14 +142,18 @@ function Table() {
 		}
 	}
 
-	function getWidgets() {
+	function getWidgets(asset) {
 
 
-		axios.get(`https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=bitcoin`)
+		axios.get(`https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${asset}`)
 			.then(function (response) {
 				setWidgets(response.data[0])
 			})
+
+
 	}
+
+
 
 	useEffect(()=>{
 		if(assetToCoin != ''){
@@ -184,14 +189,14 @@ function Table() {
 									<TableColumTd class="tableColumnTd" >{item.value}</TableColumTd>
 									<TableColumTd class="tableColumnTd" >{item.quantity}</TableColumTd>
 									<TableColumTd class="tableColumnTd" >{item.current}</TableColumTd>
-									<TableColumTd class="tableColumnTd">{getLP(item)}</TableColumTd>
+									<TableColumTd class="tableColumnTd" >{getLP(item)}</TableColumTd>
 								</tr>
 							)
 						})}
 					</tbody>
 				</TableTag>
-				<AddTableAssetBtn className='addTableAssetBtn' onClick={getWidgets}>Adicionar novo ativo</AddTableAssetBtn>
-				{/* onClick={()=>{setIsAddModalVisible(true)}} */}
+				<AddTableAssetBtn className='addTableAssetBtn' onClick={()=>{setIsAddModalVisible(true)}}>Adicionar novo ativo</AddTableAssetBtn>
+				
 			</TableContainer>
 
 			{isAddModalVisible ?
