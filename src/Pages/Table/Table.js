@@ -255,7 +255,7 @@ function Table() {
 						</div>
 						<div className='widgetAssetConversor--currency'>
 							<h3>BRL</h3>
-							<input value={coinToAsset} onChange={(e) =>{setCoinToAsset(e.target.value)}}></input>
+							<input value={coinToAsset} onChange={(e) =>{setCoinToAsset(e.target.value)}} readOnly></input>
 						</div>
 					</>
 				}

@@ -1,4 +1,4 @@
-import { useAlert } from 'react-alert'
+import { useAlert, position, style } from 'react-alert'
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import './Search.css'
@@ -65,7 +65,7 @@ const AddAssetToTable = styled.button`
     margin-left: -30px;
     border-radius: 100%;
 
-    background-color: ${props=> props.theme.searchBtnWhite};
+    background-color: ${props=> props.theme.searchBtn};
     color: ${props=> props.theme.searchBtnColor};
     font-weight: bold;
     cursor: pointer;
@@ -79,7 +79,7 @@ const AddAssetToTable = styled.button`
             height: 30px;
             border-radius: 20px;
             margin-left: -220px;
-            background-color: ${props=> props.theme.searchBtnBorder};
+            background-color: ${props=> props.theme.searchBtnColor};
             transition: all ease 0.3s;
 
                 &:after{
@@ -121,7 +121,7 @@ function Search(){
 
 
     const [asset, setAsset] = useState('')
-    const [req, setReq] = useState([])
+    const [req, setReq] = useState([[]])
     const [isModalVisible, setIsModalVisible] = useState(false)
     const [isAddModalVisible, setIsAddModalVisible] = useState(false)
     const url = `https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${asset}`
@@ -131,13 +131,24 @@ function Search(){
 
         if(asset == '' || asset == undefined){
             alert.show('Por favor, digite um ativo')
-        }else{
+        }
+        else{
             axios.get(url)
             .then(function(response){
                 setReq(response.data);
             })
-        }
+        } 
     }
+
+    useEffect(()=>{
+        if (req.length == 0){
+            alert.error(`Por favor, digite um ativo válido`,{
+                position: 'top center',
+                timeout: 2000
+            })
+            setAsset('')
+        }
+    }, [req])
 
 
     return(

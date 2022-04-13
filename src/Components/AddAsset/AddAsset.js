@@ -4,7 +4,7 @@ import nextId , { setPrefix } from "react-id-generator";
 import { useAlert, positions} from 'react-alert';
 import './AddAsset.css'
 
-function AddAsset({ id = 'modal', onClose = () => { }, useAsset = () => {} }) {
+function AddAsset({ id = 'modal', onClose = () => { }, useAsset}) {
 
     setPrefix('')
     var assetId = nextId()
@@ -26,6 +26,12 @@ function AddAsset({ id = 'modal', onClose = () => { }, useAsset = () => {} }) {
 
     }, )
 
+    // useEffect(()=>{
+        
+    //     if (useAsset != ''){
+    //         setAddAssetList(useAsset)
+    //     }
+    // })
 
     function handleAdd(e) {
 
