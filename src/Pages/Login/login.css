@@ -8,7 +8,7 @@
     top: calc(50% - 357.5px);
 }
 
-.appName{
+/* .appName{
     position: absolute;
     width: 301px;
     height: 56px;
@@ -42,7 +42,7 @@
     line-height: 18px;
 
     color: #000000;
-}
+} */
 .loginContainer{
     position: absolute;
     width: 556px;
@@ -58,7 +58,7 @@
     border-radius: 40px;
 }
 
-.username{
+/* .username{
     position: absolute;
     width: 435px;
     height: 48px;
@@ -74,7 +74,7 @@
 
     font-size: 20px;
     text-transform: uppercase;
-}
+} */
 .usernameImg{
     position: absolute;
     width: 34px;
@@ -93,7 +93,7 @@
 
     text-transform: capitalize;
 }
-.password{
+/* .password{
     position: absolute;
     width: 435px;
     height: 48px;
@@ -109,7 +109,7 @@
 
     font-size: 20px;
     text-transform: uppercase;
-}
+} */
 .password::placeholder{
     position: absolute;
     left: 15px;
@@ -128,7 +128,7 @@
 
     opacity: 0.3;
 }
-.forgotPassword{
+/* .forgotPassword{
     position: absolute;
     width: 237px;
     height: 45px;
@@ -144,9 +144,9 @@
     color: #000000;
 
     cursor: pointer;
-}
+} */
 
-.signin{
+/* .signin{
     position: absolute;
     width: 435px;
     height: 69px;
@@ -166,22 +166,8 @@
 
     cursor: pointer;
 
-}
-/* .signin p{
-    display: flex;
-    position: absolute;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 36px;
-    line-height: 42px;
-
-
-    justify-content: center;
-    margin-top: 95px;
-    color: #FFFFFF;
 } */
-.account{
+/* .account{
     position: absolute;
     width: 341px;
     height: 45px;
@@ -196,7 +182,7 @@
 
     color: #000000;
     white-space: nowrap;
-}
+} */
 
 .account span{
     cursor: pointer;

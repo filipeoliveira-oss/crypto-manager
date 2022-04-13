@@ -15,7 +15,12 @@ import Table from './Pages/Table/Table';
 //DEFINIR AS CORES
 const LightTheme={
 appBGC : '#E4E9F7',
-  
+
+loginAppName: '#3B2F79',
+loginText: 'black',
+loginInputsBorder: '#7371FC',
+loginSignIn: '#3B2F79',
+
 sidebarBGC: '#f7f4ff',
 sidebarProfile: '#7064f7',
 sidebarWhite: '#ffffff',
@@ -53,6 +58,11 @@ tableWidgetBorder: 'rgba(184, 109, 228, 0.37)'
 }
 const DarkTheme={
 appBGC : '#1F2933',
+
+loginAppName: '#109487',
+loginText: 'white',
+loginInputsBorder: '#109487',
+loginSignIn: '#109487',
 
 sidebarBGC: '#616E7C',
 sidebarProfile: '#1DDECB',
@@ -123,7 +133,7 @@ function App() {
         <AssetListProvider>
           <BrowserRouter>
               <Routes>
-                  <Route path="/" element={<Login/>} exact />
+                  <Route path="/" element={<Login theme={theme} setTheme={setTheme}/>} exact />
                   <Route path="home" element={[<Home />, <SideBar theme={theme} setTheme={setTheme}/>]}/>
                   <Route path="search" element={[<Search />, <SideBar theme={theme} setTheme={setTheme}/>]} />
                   <Route path="table" element={[<Table/>, <SideBar theme={theme} setTheme={setTheme}/>]} />
