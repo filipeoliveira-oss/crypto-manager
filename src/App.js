@@ -12,6 +12,9 @@ import Search from './Pages/Search/Search';
 import ReactTooltip from 'react-tooltip';
 import Table from './Pages/Table/Table';
 
+
+
+
 //DEFINIR AS CORES
 const LightTheme={
 appBGC : '#E4E9F7',
@@ -115,6 +118,9 @@ body {
 
 function App() {
   const [theme, setTheme] = useState('light')
+  //DEFINIR A BUSCA 
+  const [asset, setAsset] = useState('')
+
 
   useEffect(()=>{
     var theme = localStorage.getItem('themeSelected')
@@ -128,14 +134,14 @@ function App() {
   return (
     <ThemeProvider theme={themes[theme]}>
       <GlobalStyle theme={themes[theme]}/>
-      <div className='app'>
+      <div className='app' asset={asset} setAsset={setAsset}>
         <ReactTooltip place='bottom' effect='solid' />
         <AssetListProvider>
           <BrowserRouter>
               <Routes>
                   <Route path="/" element={<Login theme={theme} setTheme={setTheme}/>} exact />
                   <Route path="home" element={[<Home />, <SideBar theme={theme} setTheme={setTheme}/>]}/>
-                  <Route path="search" element={[<Search />, <SideBar theme={theme} setTheme={setTheme}/>]} />
+                  <Route path="search" element={[<Search asset={asset} setAsset={setAsset}/>, <SideBar theme={theme} setTheme={setTheme}/>]} />
                   <Route path="table" element={[<Table/>, <SideBar theme={theme} setTheme={setTheme}/>]} />
                 </Routes>
           </BrowserRouter>

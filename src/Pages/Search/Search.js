@@ -117,19 +117,18 @@ const Infos = styled.div`
 }
 `
 
-function Search(){
+function Search(props){
 
 
-    const [asset, setAsset] = useState('')
     const [req, setReq] = useState([[]])
     const [isModalVisible, setIsModalVisible] = useState(false)
     const [isAddModalVisible, setIsAddModalVisible] = useState(false)
-    const url = `https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${asset}`
+    const url = `https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${props.asset}`
     const alert = useAlert()
     
     function HandleAsset(){
 
-        if(asset == '' || asset == undefined){
+        if(props.asset == '' || props.asset == undefined){
             alert.show('Por favor, digite um ativo')
         }
         else{
@@ -140,21 +139,24 @@ function Search(){
         } 
     }
 
+
+
     useEffect(()=>{
         if (req.length == 0){
             alert.error(`Por favor, digite um ativo válido`,{
                 position: 'top center',
                 timeout: 2000
             })
-            setAsset('')
+            props.setAsset('')
         }
     }, [req])
 
+    
 
     return(
         <>
             <div className='searchContainer'>
-                <InputAsset className='inputAsset' placeholder='Busque por um ativo' value={asset} onChange={e => setAsset(e.target.value)}></InputAsset>
+                <InputAsset className='inputAsset' placeholder='Busque por um ativo' value={props.asset} onChange={e => props.setAsset(e.target.value)}></InputAsset>
                 <SearchBtn className='searchBtn'  onClick={HandleAsset} type='submit'>Buscar</SearchBtn>
                 <AssetsBtn className='assetsBtn' onClick={()=>{setIsModalVisible(true)}} data-tip="Ver lista de todos os ativos">?</AssetsBtn>
                 <AddAssetToTable className='addAsset' data-hover='Adicionar ativo à lista'style={{ visibility: req == ''? 'hidden': 'visible'}} onClick={()=>{setIsAddModalVisible(true)}}>+</AddAssetToTable>
@@ -165,7 +167,9 @@ function Search(){
                 }
                 {isAddModalVisible ? 
                     <AddAsset
-                    onClose={()=>setIsAddModalVisible(false)} useAsset={asset}/> 
+                    onClose={()=>setIsAddModalVisible(false)}
+                    asset={props.asset}
+                    setAsset={props.setAsset}/> 
                     : 
                     null
                 }

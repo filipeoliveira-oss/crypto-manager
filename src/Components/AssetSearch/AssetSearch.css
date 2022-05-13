@@ -26,7 +26,6 @@
     width: 32px;
     height: 32px;
     display: flex;
-
     margin-left: calc(100% - 30px);
     margin-top: 15px;
     cursor: pointer;
@@ -38,6 +37,9 @@
     width: 2.5px;
     height: 24px;
     background-color: #000;
+    margin-top: 60px;
+    right: 40px;
+    
 }
 .closeBtn::before{
     transform: rotate(45deg);
@@ -46,8 +48,13 @@
     transform: rotate(-45deg);
 }
 .assetTable {
+    display: flex;
+    flex-direction: column;
     margin-top: 15px;
     width: 100%;
+
+    align-items: center;
+
 }
 .content{
     text-align: end;
@@ -58,6 +65,7 @@
 .tableName, .tableId{
     text-align: center;
     padding-bottom: 20px;
+    padding-top: 20px;
 }
 .assetName, .assetId{
     padding-bottom: 10px;
@@ -83,4 +91,14 @@
 
     transition: all ease 0.7s;
     cursor: pointer;
+}
+.searchInput{
+    display: flex;
+    width: 400px;
+    height: 30px;
+    margin-top: 15px;
+
+    outline: none;
+    border: 1px solid #4102e0;
+    border-radius: 20px;
 }

@@ -8,7 +8,7 @@ const axios = require('axios');
 
 const HomeContent = styled.div`
     
-margin-left: 150px;
+margin-left: 250px;
 display: flex;
 flex-direction: column;
 margin-top: 25px;
@@ -25,7 +25,6 @@ const News = styled.div`
 position: absolute;
 width: 80%;
 height: 803px;
-
 top: 125px;
 z-index: -2;
 
@@ -42,6 +41,7 @@ overflow: auto;
 const A = styled.a`
 text-decoration: none;
 color: ${props => props.theme.homeText};
+padding: 0px 15px;
 
     &.newsItem{
         display: flex;

@@ -38,9 +38,9 @@ function AssetSearch({ id ='modal',onClose = ()=>{}}){
                     {assetList.length == 1 ? <Loading/>
                     :
                     <table className='assetTable'>
-                        <input onChange={(e) => hanledChange(e)}></input>
+                        <input class = 'searchInput' onChange={(e) => hanledChange(e)}></input>
                         <tbody>
-                            <tr>
+                            <tr >
                                 <th className='tableName'>Nome</th>
                                 <th className='tableId'>ID</th>
                             </tr>

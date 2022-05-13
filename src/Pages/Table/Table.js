@@ -126,7 +126,7 @@ function Table() {
 
 
 
-
+	const [search, setSearch ] = useState('')
 	const [widgets, setWidgets] = useState([{}])
 	const [isAddModalVisible, setIsAddModalVisible] = useState(false)
 	const { assetTable } = useContext(AssetListContext)
@@ -142,10 +142,10 @@ function Table() {
 		}
 	}
 
-	function getWidgets(asset) {
+	function getWidgets() {
 
 
-		axios.get(`https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${asset}`)
+		axios.get(`https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${'ethereum'}`)
 			.then(function (response) {
 				setWidgets(response.data[0])
 			})
@@ -183,7 +183,7 @@ function Table() {
 					<tbody>
 						{assetTable.map((item) => {
 							return (
-								<tr class="tableRow" key={item.id}>
+								<tr class="tableRow" key={item.id} >
 									<TableColumTd class="tableColumnTd" >{item.asset}</TableColumTd>
 									<TableColumTd class="tableColumnTd" >{item.action}</TableColumTd>
 									<TableColumTd class="tableColumnTd" >{item.value}</TableColumTd>
