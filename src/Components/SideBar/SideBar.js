@@ -191,7 +191,7 @@ function SideBar(props){
 
                 <Link to='/home'>
                     <div >
-                        <Button className={`home${isActive ? "" : "--active"}`}><img className='homeImg' src={require('../../Assets/home.png')} alt='home' /> <p>home</p></Button>
+                        <Button className={`home${isActive ? "" : "--active"}`}><img className='homeImg' src={require('../../Assets/home.png')} alt='home' /> <p>Início</p></Button>
                     </div>
                 </Link>
                 

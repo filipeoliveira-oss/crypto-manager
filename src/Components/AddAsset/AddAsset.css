@@ -4,6 +4,11 @@
     margin-left: 25px;
     margin-top: 5px;
     font-weight: bold;
+    flex-direction: row;
+}
+.header{
+    /* display: flex; */
+    /* flex-direction: row; */
 }
 .headerLine{
     width: 90%;

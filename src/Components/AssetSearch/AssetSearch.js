@@ -38,7 +38,6 @@ function AssetSearch({ id ='modal',onClose = ()=>{}}){
                     {assetList.length == 1 ? <Loading/>
                     :
                     <table className='assetTable'>
-                        <input class = 'searchInput' onChange={(e) => hanledChange(e)}></input>
                         <tbody>
                             <tr >
                                 <th className='tableName'>Nome</th>
@@ -55,7 +54,6 @@ function AssetSearch({ id ='modal',onClose = ()=>{}}){
                         </tbody>
                     </table>
                     }
-                    
                 </div>
             </div>  
         </div>

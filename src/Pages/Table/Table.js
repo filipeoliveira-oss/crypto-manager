@@ -13,7 +13,7 @@ height: 90%;
 margin-left: 15%;
 margin-top: 2.5%;
 border-radius: 16px;
-overflow: hidden;
+overflow: auto;
 background: #7918f2;
 background: ${props => props.theme.tableContainerBGCWebkit};
 background: ${props => props.theme.tableContainerBGCOLiner};
@@ -26,10 +26,10 @@ background-color: transparent;
 width: 100%;
 text-align: center;
 text-transform: uppercase;
+cursor: pointer;
 &.tableRow{
 	background-color: ${props => props.theme.tableRowHoverTd};
-}
-
+};
 `
 
 const TableTh = styled.th`
@@ -51,11 +51,11 @@ line-height: 1.4;
 	&:hover{
 		background-color: ${props => props.theme.tableRowTdHover};
 	}
+padding: 5px
 `
 
 const AddTableAssetBtn = styled.button`
 display: flex;
-
 width: 422px;
 height: 35px;
 margin-top: 20px;
@@ -64,7 +64,7 @@ align-items: center;
 justify-content: center;
 border-radius: 30px;
 margin-left: calc(50% - 211px);
-
+overflow: hidden;
 background-color: ${props => props.theme.tableWhite};
 color: ${props => props.theme.searchBtnColor};
 font-weight: bold;
@@ -119,20 +119,14 @@ align-items: center;
 
 `
 
+function Table(props) {
 
 
-
-function Table() {
-
-
-
-	const [search, setSearch ] = useState('')
 	const [widgets, setWidgets] = useState([{}])
 	const [isAddModalVisible, setIsAddModalVisible] = useState(false)
 	const { assetTable } = useContext(AssetListContext)
 	const [assetToCoin, setAssetToCoin] = useState(0)
 	const [coinToAsset, setCoinToAsset] = useState(0)
-	const [selectedAsset, setSelectedAsset] = useState('')
 
 	function getLP(item) {
 		if (item.action == 'compra') {
@@ -142,71 +136,79 @@ function Table() {
 		}
 	}
 
-	function getWidgets() {
+	function getWidgets(selected) {
 
 
-		axios.get(`https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${'ethereum'}`)
+		axios.get(`https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${selected}`)
 			.then(function (response) {
-				setWidgets(response.data[0])
+				if (response.data.length != 0) {
+					setWidgets(response.data[0])
+				} else {
+					setWidgets('')
+				}
 			})
-
-
 	}
 
+	useEffect(() => {
+		console.log(`valor inicial == ${widgets.length}`)
+	}, [])
 
-
-	useEffect(()=>{
-		if(assetToCoin != ''){
+	useEffect(() => {
+		if (assetToCoin != '') {
 			var result = parseInt(widgets.current_price) * parseInt(assetToCoin)
-		}else{
+		} else {
 			result = 0
 		}
 
 		setCoinToAsset(result)
 	}, [assetToCoin])
-	
+
+	function handleClick(e) {
+		console.log(e.target.item.asset)
+	}
 
 	return (
 		<>
-			<TableContainer class="tableContainer">
-				<TableTag>
-					<thead>
-						<tr class="tableRow">
-							<TableTh class="tableColumn">Ativo</TableTh>
-							<TableTh class="tableColumn">Movimento</TableTh>
-							<TableTh class="tableColumn">Valor</TableTh>
-							<TableTh class="tableColumn">Quantidade</TableTh>
-							<TableTh class="tableColumn">Valor atual</TableTh>
-							<TableTh class="tableColumn ">L/P</TableTh>
-						</tr>
-					</thead>
-					<tbody>
-						{assetTable.map((item) => {
-							return (
-								<tr class="tableRow" key={item.id} >
-									<TableColumTd class="tableColumnTd" >{item.asset}</TableColumTd>
-									<TableColumTd class="tableColumnTd" >{item.action}</TableColumTd>
-									<TableColumTd class="tableColumnTd" >{item.value}</TableColumTd>
-									<TableColumTd class="tableColumnTd" >{item.quantity}</TableColumTd>
-									<TableColumTd class="tableColumnTd" >{item.current}</TableColumTd>
-									<TableColumTd class="tableColumnTd" >{getLP(item)}</TableColumTd>
-								</tr>
-							)
-						})}
-					</tbody>
-				</TableTag>
-				<AddTableAssetBtn className='addTableAssetBtn' onClick={()=>{setIsAddModalVisible(true)}}>Adicionar novo ativo</AddTableAssetBtn>
-				
-			</TableContainer>
+				<TableContainer class="tableContainer">
+					<TableTag>
+						<thead>
+							<tr class="tableRow">
+								<TableTh class="tableColumn">Ativo</TableTh>
+								<TableTh class="tableColumn">Movimento</TableTh>
+								<TableTh class="tableColumn">Valor</TableTh>
+								<TableTh class="tableColumn">Quantidade</TableTh>
+								<TableTh class="tableColumn">Valor atual</TableTh>
+								<TableTh class="tableColumn ">L/P</TableTh>
+							</tr>
+						</thead>
+						<tbody>
+							{assetTable.map((item) => {
+								return (
+									<tr class="tableRow tableRowClick" key={item.id} onClick={() => getWidgets(item.asset)}>
+										<TableColumTd class="tableColumnTd" >{item.asset}</TableColumTd>
+										<TableColumTd class="tableColumnTd" >{item.action}</TableColumTd>
+										<TableColumTd class="tableColumnTd" >{item.value}</TableColumTd>
+										<TableColumTd class="tableColumnTd" >{item.quantity}</TableColumTd>
+										<TableColumTd class="tableColumnTd" >{item.current}</TableColumTd>
+										<TableColumTd class="tableColumnTd" >{getLP(item)}</TableColumTd>
+									</tr>
+								)
+							})}
+						</tbody>
+					</TableTag>
+					<AddTableAssetBtn className='addTableAssetBtn' onClick={() => { setIsAddModalVisible(true) }}>Adicionar novo ativo</AddTableAssetBtn>
+				</TableContainer>
 
 			{isAddModalVisible ?
 				<AddAsset
-					onClose={() => setIsAddModalVisible(false)} />
+					onClose={() => setIsAddModalVisible(false)}
+					asset={props.asset}
+					setAsset={props.setAsset} />
 				:
 				null
 			}
 
-			<WidgetAssetInfo className='widgetAssetInfo' >
+			<WidgetAssetInfo className='widgetAssetInfo'>
 				{widgets.length != undefined ? <h1 className='emptyAsset'>Selecione um ativo para exibir as informações</h1>
 
 					:
@@ -215,7 +217,7 @@ function Table() {
 						<img className='widgetAssetInfo--image' src={widgets.image}></img>
 						<div className='widgetAssetInfo--values'>
 							<h4>{widgets.length != undefined ? <h4>Price</h4> : widgets.current_price} </h4>
-							<h4 className='widgetAssetInfo--values--variation'>{widgets.length != undefined ? <h4>Variation</h4> : <h4>({widgets.price_change_percentage_24h})</h4>}</h4>
+							<h4 className='widgetAssetInfo--values--variation'>{widgets.length != undefined ? <h4>Variation</h4> : <h4>({widgets.price_change_percentage_24h}%)</h4>}</h4>
 						</div>
 						<div className='widgetAssetInfo--others' >
 							<table>
@@ -251,11 +253,11 @@ function Table() {
 						<h1>Conversor</h1>
 						<div className='widgetAssetConversor--asset'>
 							<img src={widgets.image}></img>
-							<input value={assetToCoin} onChange={(e) =>{setAssetToCoin(e.target.value)}}></input>
+							<input value={assetToCoin} onChange={(e) => { setAssetToCoin(e.target.value) }}></input>
 						</div>
 						<div className='widgetAssetConversor--currency'>
 							<h3>BRL</h3>
-							<input value={coinToAsset} onChange={(e) =>{setCoinToAsset(e.target.value)}} readOnly></input>
+							<input value={coinToAsset} onChange={(e) => { setCoinToAsset(e.target.value) }} readOnly></input>
 						</div>
 					</>
 				}
