@@ -6,26 +6,7 @@ export const AssetListContext = createContext({})
 function AssetListProvider ({children}){
 
 
-    const [assetTable, setAssetTable ] = useState(
-		[
-		// {
-		// 	id: id,
-		// 	asset: 'bitcoin',
-		// 	action:'compra',
-		// 	value: '10',
-		// 	quantity: '10',
-		// 	current: '20',
-		// },
-		// {
-		// 	id: id,
-		// 	asset: 'ethereum',
-		// 	action:'venda',
-		// 	value: '20',
-		// 	quantity: '10',
-		// 	current: '10',
-		// }
-	
-	])
+    const [assetTable, setAssetTable ] = useState([])
 
 	useEffect(()=>{
 		if(localStorage.getItem('asset')){

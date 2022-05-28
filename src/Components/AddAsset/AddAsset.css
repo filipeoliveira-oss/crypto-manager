@@ -6,10 +6,7 @@
     font-weight: bold;
     flex-direction: row;
 }
-.header{
-    /* display: flex; */
-    /* flex-direction: row; */
-}
+
 .headerLine{
     width: 90%;
     color: white;
@@ -63,8 +60,7 @@
 .typeAssetList{
     display: flex;
     width: 88%;
-    /* 160.5px */
-    /* margin-left: calc(50% - 80.25px); */
+
     margin-left: 6.5% ;
 }
 .addAssetList:focus, .typeAssetList:focus, .valueAssetList:focus, .quantityAssetList:focus{

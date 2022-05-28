@@ -62,10 +62,10 @@ function AddAsset({ id = 'modal', onClose = () => { }, asset, setAsset}) {
             
         }
 
-        // setTypeAssetList('')
-        // setAsset('')
-        // setValueAssetList('')
-        // setQuantityAssetList('')
+        setTypeAssetList('')
+        setAsset('')
+        setValueAssetList('')
+        setQuantityAssetList('')
         e.preventDefault()
 
     }

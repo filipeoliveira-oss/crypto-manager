@@ -143,17 +143,6 @@ function Login(){
     const [password, setPassword ] = useState('');
     
 
-    const handleLogin = () =>{
-         if(username === 'login' && password === 'senha'){
-            return true
-         }else{
-            setUsername((username) => username ='');
-            setPassword((password) => password = '');
-            // alert('erro')
-            return false
-         }
-    }
-
 
     return(
         <>
@@ -175,7 +164,7 @@ function Login(){
                     <ForgotPassword className='forgotPassword'>Esqueceu sua senha?</ForgotPassword>
 
                     <Link to='/home'>
-                        <SingIn className='signin' type='submit' onClick={handleLogin}>Entrar</SingIn>
+                        <SingIn className='signin' type='submit'>Entrar</SingIn>
                     </Link>
 
                     <Account className='account'>Não tem uma conta? <span>Clique aqui!</span></Account>

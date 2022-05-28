@@ -15,19 +15,13 @@ function AssetSearch({ id ='modal',onClose = ()=>{}}){
         axios.get(listUrl)
         .then(function(response){
             setAssetList(response.data)
-            console.log(assetList)
         })
     }, [])
     
     const handleOutSideClick = (e) =>{
         if(e.target.id === id) onClose();
     }
-    
-    function hanledChange(e){
-        setFilter(e.target.value)
 
-        // setAssetList(newList)
-    }
 
     return(
         

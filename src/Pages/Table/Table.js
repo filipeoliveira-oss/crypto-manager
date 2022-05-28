@@ -150,10 +150,6 @@ function Table(props) {
 	}
 
 	useEffect(() => {
-		console.log(`valor inicial == ${widgets.length}`)
-	}, [])
-
-	useEffect(() => {
 		if (assetToCoin != '') {
 			var result = parseInt(widgets.current_price) * parseInt(assetToCoin)
 		} else {
@@ -163,9 +159,6 @@ function Table(props) {
 		setCoinToAsset(result)
 	}, [assetToCoin])
 
-	function handleClick(e) {
-		console.log(e.target.item.asset)
-	}
 
 	return (
 		<>

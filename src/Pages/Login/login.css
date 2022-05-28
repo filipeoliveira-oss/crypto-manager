@@ -8,41 +8,6 @@
     top: calc(50% - 357.5px);
 }
 
-/* .appName{
-    position: absolute;
-    width: 301px;
-    height: 56px;
-    left: 71%;
-    top: 30px;
-    align-items: center;
-    justify-content: center;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 56px;
-
-    color: #3B2F79;
-
-    white-space: nowrap;
-
-}
-.slogan{
-    position: absolute;
-    width: 476px;
-    height: 37px;
-    left: 72%;
-    top: 150px;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 18px;
-
-    color: #000000;
-} */
 .loginContainer{
     position: absolute;
     width: 556px;
@@ -58,23 +23,6 @@
     border-radius: 40px;
 }
 
-/* .username{
-    position: absolute;
-    width: 435px;
-    height: 48px;
-    left: 62px;
-    top: 102px;
-
-    border: 1px solid #7371FC;
-    box-sizing: border-box;
-    border-radius: 40px;
-
-    outline: none;
-    padding-left: 15px;
-
-    font-size: 20px;
-    text-transform: uppercase;
-} */
 .usernameImg{
     position: absolute;
     width: 34px;
@@ -93,23 +41,7 @@
 
     text-transform: capitalize;
 }
-/* .password{
-    position: absolute;
-    width: 435px;
-    height: 48px;
-    left: 62px;
-    top: 181px;
 
-    border: 1px solid #7371FC;
-    box-sizing: border-box;
-    border-radius: 40px;
-
-    outline: none;
-    padding-left: 15px;
-
-    font-size: 20px;
-    text-transform: uppercase;
-} */
 .password::placeholder{
     position: absolute;
     left: 15px;
@@ -128,61 +60,6 @@
 
     opacity: 0.3;
 }
-/* .forgotPassword{
-    position: absolute;
-    width: 237px;
-    height: 45px;
-    left: calc(50% - 118.5px);
-    top: 282px;
-    
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 24px;
-    line-height: 28px;
-    
-    color: #000000;
-
-    cursor: pointer;
-} */
-
-/* .signin{
-    position: absolute;
-    width: 435px;
-    height: 69px;
-    left: 62px;
-    top: 372px;
-
-    background: #3B2F79;
-    border-radius: 40px;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 36px;
-    line-height: 42px;
-
-    color: #FFFFFF;
-
-    cursor: pointer;
-
-} */
-/* .account{
-    position: absolute;
-    width: 341px;
-    height: 45px;
-    left: calc(50% - 170.5px);
-    top: 462px;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 24px;
-    line-height: 28px;
-
-    color: #000000;
-    white-space: nowrap;
-} */
 
 .account span{
     cursor: pointer;

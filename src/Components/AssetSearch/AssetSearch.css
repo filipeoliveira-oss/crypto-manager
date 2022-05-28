@@ -27,8 +27,8 @@
     height: 32px;
     display: flex;
     margin-left: calc(100% - 30px);
-    margin-top: 15px;
     cursor: pointer;
+    
     
 }
 .closeBtn::before, .closeBtn::after{
@@ -37,7 +37,7 @@
     width: 2.5px;
     height: 24px;
     background-color: #000;
-    margin-top: 5px;
+    margin-top: 45px;
     right: 40px;
     
 }

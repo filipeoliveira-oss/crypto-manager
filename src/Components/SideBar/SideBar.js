@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import './SideBar.css'
 
 const Sidebar = styled.div`
-    position: absolute;
+    position: fixed;
 
     width: 98px;
     height: 100%;
@@ -31,7 +31,7 @@ const Sidebar = styled.div`
             transition: ease all 0.7s;
         }
     `
-    const Profile = styled.div`
+const Profile = styled.div`
         height: 57px;
         width: 61px;
         margin-left: calc(50% - 30.5px);
@@ -61,7 +61,7 @@ const Sidebar = styled.div`
                 padding-top: calc(50% - 25px);
             }
     `
-    const Expand = styled.h1`
+const Expand = styled.h1`
         width: 25px;
         height: 26px;
         background: ${props => props.theme.sidebarProfile};
@@ -94,7 +94,7 @@ const Sidebar = styled.div`
                 transition: ease all 0.7s;
             }
     `
-    const Button = styled.button`
+const Button = styled.button`
         position: inherit;
         display: flex;
         width: 76px;
@@ -122,7 +122,7 @@ const Sidebar = styled.div`
                 transition: ease all 0.7s;
             }
     `
-    const Logout = styled.button`
+const Logout = styled.button`
         position: inherit;
         display: flex;
         width: 76px;
@@ -151,67 +151,74 @@ const Sidebar = styled.div`
             }
     `
 
-function SideBar(props){
-    
+
+function SideBar(props) {
+
 
     const [isActive, setActive] = useState('false');
 
     const handleToggle = () => {
-        setActive(!isActive);    
+        setActive(!isActive);
     };
 
-    function changeTheme(){
+    function changeTheme() {
         var selectedTheme = localStorage.getItem('themeSelected')
-        
-        if(selectedTheme == 'light' || selectedTheme == null){
+
+        if (selectedTheme == 'light' || selectedTheme == null) {
             localStorage.setItem('themeSelected', 'dark')
             props.setTheme('dark')
-        }else{
+        } else {
             localStorage.setItem('themeSelected', 'light')
             props.setTheme('light')
         }
     }
 
-    return(
+
+    return (
         <div className='sideBarContainer'>
+
 
             <Sidebar className={`sideBar${isActive ? "" : "--active"}`}>
 
                 <Profile className={`profile${isActive ? "" : "--active"}`}>
                     <h3>FG</h3>
-                    <Expand className={`expand${isActive ? "" : "--active"}`} onClick= {handleToggle}>{'>'}</Expand>
+                    <Expand className={`expand${isActive ? "" : "--active"}`} onClick={handleToggle}>{'>'}</Expand>
                 </Profile>
 
                 <Link to='/search'>
                     <div>
-                        <Button className={`search${isActive ? "" : "--active"}`}><img className='searchImg' src={require('../../Assets/search.png')} alt='search'/> <p>buscar</p></Button>
+                        <Button className={`search${isActive ? "" : "--active"}`}><img className='searchImg' src={require('../../Assets/search.png')} alt='search' /> <p>buscar</p></Button>
                     </div>
                 </Link>
-                
+
 
                 <Link to='/home'>
                     <div >
                         <Button className={`home${isActive ? "" : "--active"}`}><img className='homeImg' src={require('../../Assets/home.png')} alt='home' /> <p>Início</p></Button>
                     </div>
                 </Link>
-                
+
                 <Link to='/table'>
                     <div >
-                        <Button className={`table${isActive ? "" : "--active"}`}><img className='tableImg' src={require('../../Assets/table.png')} alt='crypto'/> <p>ativos</p></Button>
+                        <Button className={`table${isActive ? "" : "--active"}`}><img className='tableImg' src={require('../../Assets/table.png')} alt='crypto' /> <p>ativos</p></Button>
                     </div>
                 </Link>
 
                 <Link to='/'>
                     <div >
-                        <Logout className={`logout${isActive ? "" : "--active"}`}><img className='logoutImg' src={require('../../Assets/logout.png')} alt='logout'/><p>sair</p></Logout>
+                        <Logout className={`logout${isActive ? "" : "--active"}`}><img className='logoutImg' src={require('../../Assets/logout.png')} alt='logout' /><p>sair</p></Logout>
                     </div>
                 </Link>
-                    
+
 
                 <div onClick={changeTheme}>
-                    <UseSwitchesCustom className={`toggle${isActive ? "" : "--active"}`}/>
+                    <UseSwitchesCustom className={`toggle${isActive ? "" : "--active"}`} checked/>
+                    {/* <label class="switch" >
+                        <input type="checkbox" onClick={changeTheme}></input>
+                        <span class="slider round"></span>
+                    </label> */}
                 </div>
-                
+
             </Sidebar>
 
         </div>
