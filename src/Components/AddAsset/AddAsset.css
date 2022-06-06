@@ -1,26 +1,10 @@
-/* .headerLabel{
-    color: black;
-    font-size: 20px;
-    margin-left: 25px;
-    margin-top: 5px;
-    font-weight: bold;
-    flex-direction: row;
-} */
 
-/* .headerLine{
-    width: 90%;
-    color: white;
-} */
 .closeBtn{
     position: relative;
     margin-top: -40px;
 
 }
-/* .containerList{
-    width: 400px;
-    height: 300px;
-    background-color: #E4E9F7;
-} */
+
 .content{
     display: flex;
     width: 100%;
@@ -66,21 +50,3 @@
 .addAssetList:focus, .typeAssetList:focus, .valueAssetList:focus, .quantityAssetList:focus{
     outline: 1px solid blueviolet;
 }
-
-/* .addAssetBtn{
-    width: 88%;
-    height: 35px;
-    text-align: center;
-    margin-left: 6.5%;
-    font-weight: 600;
-    border: none;
-    border-radius:5px;
-    color: whitesmoke;
-    background-color: #7064F7;
-} */
-/* .addAssetBtn:hover{
-    -webkit-filter: brightness(100%);   
-    background-color: #4E04FE;
-
-    transition: all ease 0.3s;
-} */
