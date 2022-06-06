@@ -57,7 +57,21 @@ const LightTheme = {
   tableWhiteSmoke: 'whitesmoke',
   tableWidgetBGC: 'rgba(134, 62, 177, 0.70)',
   tableBoxShadow: 'rgba(0, 0, 0, 0.1)',
-  tableWidgetBorder: 'rgba(184, 109, 228, 0.37)'
+  tableWidgetBorder: 'rgba(184, 109, 228, 0.37)',
+
+  assetsContainer: '#E4E9F7',
+  assetsColor: '#000',
+  assetsCloseBtn: '#000',
+  assetsHoverColor: '#FFFFFF',
+  assetsHoverBgc: '#4102e0',
+
+  addAssetsCloseBtn: '#000',
+  addAssetsContainerListBgc: '#E4E9F7',
+  addAssetBtnColor: 'whitesmoke',
+  addAssetBtnBgc: '#7064F7',
+  addAssetBtnBgcHover: '#4E04FE',
+  addAssetHeaderLabelColor: '#000',
+  addAssetListOutline: 'blueviolet'
 }
 const DarkTheme = {
   appBGC: '#1F2933',
@@ -99,7 +113,21 @@ const DarkTheme = {
   tableWhiteSmoke: 'whitesmoke',
   tableWidgetBGC: 'rgba(16, 148, 135, 0.7)',
   tableBoxShadow: 'rgba(0, 0, 0, 0.1)',
-  tableWidgetBorder: 'rgba(12, 110, 100, 0.37)'
+  tableWidgetBorder: 'rgba(12, 110, 100, 0.37)',
+
+  assetsContainer: '#214773',
+  assetsColor: '#FFFFFF',
+  assetsCloseBtn: '#FFFFFF',
+  assetsHoverColor: '#FFFFFF',
+  assetsHoverBgc: '#109487',
+
+  addAssetsCloseBtn: '#FFF',
+  addAssetsContainerListBgc: '#214773',
+  addAssetBtnColor: 'whitesmoke',
+  addAssetBtnBgc: '#21afa1',
+  addAssetBtnBgcHover: '#109487',
+  addAssetHeaderLabelColor: '#FFF',
+  addAssetListOutline: '#109487'
 }
 
 

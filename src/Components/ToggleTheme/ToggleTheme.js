@@ -102,5 +102,12 @@ function MUISwitch(props) {
 }
 
 export default function UseSwitchesCustom() {
-  return <MUISwitch defaultChecked />;
+  const theme = localStorage.getItem('themeSelected')
+
+  if (theme == 'light' || theme == null){
+    return <MUISwitch />;
+  }else{
+    return <MUISwitch checked/>;
+  }
+ 
 }

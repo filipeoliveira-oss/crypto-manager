@@ -212,11 +212,7 @@ function SideBar(props) {
 
 
                 <div onClick={changeTheme}>
-                    <UseSwitchesCustom className={`toggle${isActive ? "" : "--active"}`} checked/>
-                    {/* <label class="switch" >
-                        <input type="checkbox" onClick={changeTheme}></input>
-                        <span class="slider round"></span>
-                    </label> */}
+                    <UseSwitchesCustom className={`toggle${isActive ? "" : "--active"}`} />
                 </div>
 
             </Sidebar>

@@ -151,7 +151,7 @@ function Search(props){
         }
     }, [req])
 
-    
+
 
     return(
         <>
@@ -161,7 +161,8 @@ function Search(props){
                 <AssetsBtn className='assetsBtn' onClick={()=>{setIsModalVisible(true)}} data-tip="Ver lista de todos os ativos">?</AssetsBtn>
                 <AddAssetToTable className='addAsset' data-hover='Adicionar ativo à lista'style={{ visibility: req == ''? 'hidden': 'visible'}} onClick={()=>{setIsAddModalVisible(true)}}>+</AddAssetToTable>
                 {isModalVisible ? 
-                    <AssetSearch onClose={()=>setIsModalVisible(false)}/> 
+                    <AssetSearch onClose={()=>setIsModalVisible(false)}
+                    SetAsset ={props.setAsset()}/> 
                     : 
                     null
                 }

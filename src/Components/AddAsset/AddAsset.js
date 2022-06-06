@@ -3,9 +3,112 @@ import { AssetListContext } from '../../Contexts/AssetList'
 import nextId , { setPrefix } from "react-id-generator";
 import { useAlert, positions} from 'react-alert';
 import './AddAsset.css'
+import styled from 'styled-components';
 const axios = require('axios');
 
+const Modal = styled.div`
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
 
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+const CloseBtn = styled.button`
+background-color: transparent;
+    border: none;
+    outline: none;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    margin-left: calc(100% - 30px);
+    cursor: pointer;
+    position: relative;
+   
+    &::before, &::after{
+        content: ' ';
+        position: absolute;
+        width: 2.5px;
+        height: 24px;
+        background-color: ${props => props.theme.addAssetsCloseBtn};
+        margin-top: 5px;
+        right: 40px;
+        
+    }
+    &::before{
+        transform: rotate(45deg);
+    }
+    &::after{
+        transform: rotate(-45deg);
+    }
+`
+
+const HeaderLine = styled.hr`
+    width: 90%;
+    color: white; 
+`
+
+const HeaderLabel = styled.h1`
+    color: ${props => props.theme.addAssetHeaderLabelColor};
+    font-size: 20px;
+    margin-left: 25px;
+    margin-top: 5px;
+    font-weight: bold ;
+    flex-direction: row;
+`
+
+const ContainerList = styled.div`
+width: 400px;
+height: 300px;
+background-color: ${props => props.theme.addAssetsContainerListBgc};
+`
+
+const AddAssetBtn = styled.button`
+    width: 88%;
+    height: 35px;
+    text-align: center;
+    margin-left: 6.5%;
+    font-weight: 600;
+    border: none;
+    border-radius:5px;
+    color: ${props => props.theme.addAssetBtnColor};
+    background-color:${props => props.theme.addAssetBtnBgc};
+
+        &:hover{
+            -webkit-filter: brightness(100%);   
+            background-color: ${props => props.theme.addAssetBtnBgcHover};
+        
+            transition: all ease 0.3s;
+        }
+`
+
+const AddAssetList = styled.input`
+        &:focus{
+            outline: 1px solid ${props => props.theme.addAssetListOutline};
+        }
+`
+const TypeAssetList = styled.select`
+        &:focus{
+            outline: 1px solid ${props => props.theme.addAssetListOutline};
+        }
+`
+const TypeOption = styled.option``
+
+const ValueAssetList = styled.input`
+        &:focus{
+            outline: 1px solid ${props => props.theme.addAssetListOutline};
+        }
+`
+const QuantityAssetList = styled.input`
+        &:focus{
+            outline: 1px solid ${props => props.theme.addAssetListOutline};
+        }
+`
 function AddAsset({ id = 'modal', onClose = () => { }, asset, setAsset}) {
 
     setPrefix('')
@@ -14,8 +117,10 @@ function AddAsset({ id = 'modal', onClose = () => { }, asset, setAsset}) {
     const { assetTable, setAssetTable } = useContext(AssetListContext)
     const [valueAssetList, setValueAssetList] = useState(null)
     const [quantityAssetList, setQuantityAssetList] = useState(null)
-    const [typeAssetList, setTypeAssetList] = useState(null)
+    const [typeAssetList, setTypeAssetList] = useState()
     const [current, setCurrent ] = useState()
+    const [req, setReq] = useState([[]])
+    const [erro, setErro] = useState(false)
     const alert = useAlert()
     const url = `https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${asset}`
 
@@ -33,10 +138,20 @@ function AddAsset({ id = 'modal', onClose = () => { }, asset, setAsset}) {
     useEffect(()=>{
         axios.get(url)
         .then(function(response){
-            setCurrent(response.data[0].current_price)
+            if(response.data.length == 0){
+                alert.error(`Por favor, digite um ativo válido. ${asset} é um ativo inexistente`)
+                setErro(!erro)
+            }else{
+                setCurrent(response.data[0].current_price)
+            }
         })
     }, [typeAssetList])
 
+
+    useEffect(()=>{
+        setAsset('')
+        setTypeAssetList('')
+    }, [erro])
 
     function handleAdd(e) {
 
@@ -71,26 +186,26 @@ function AddAsset({ id = 'modal', onClose = () => { }, asset, setAsset}) {
     }
 
     return (
-        <div id={id} className='modal' onClick={handleOutSideClick}>
-            <div className='containerList'>
+        <Modal id={id} className='modal' onClick={handleOutSideClick}>
+            <ContainerList className='containerList'>
                 <div className='header'>
-                    <h1 className='headerLabel'>Adicionar novo ativo</h1>
-                    <button className='closeBtn' onClick={onClose}></button>
+                    <HeaderLabel className='headerLabel'>Adicionar novo ativo</HeaderLabel>
+                    <CloseBtn className='closeBtn' onClick={onClose}></CloseBtn>
                 </div>
-                <hr className='headerLine'></hr>
+                <HeaderLine className='headerLine'></HeaderLine>
                 <form className='contentList'>
-                    <input className='addAssetList' placeholder='Ativo' required value={asset} onChange={(e) => setAsset(e.target.value)}></input><br />
-                    <input className='valueAssetList' placeholder='Valor' required type='number' value={valueAssetList} onChange={(e) => setValueAssetList(e.target.value)}></input>
-                    <input className='quantityAssetList' placeholder='Quantidade' required type='number'value={quantityAssetList} onChange={(e) => setQuantityAssetList(e.target.value)}></input><br />
-                    <select name='Type' className='typeAssetList' value={typeAssetList} required onChange={(e) => setTypeAssetList(e.target.value)}>
-                        <option value='' disabled selected>Selecione sua movimentação</option>
-                        <option value='compra'>Compra</option>
-                        <option value='venda'>Venda</option>
-                    </select><br />
-                    <button className='addAssetBtn' type='submit' onClick={(e) => handleAdd(e)}>Adicionar ativo</button>
+                    <AddAssetList className='addAssetList' placeholder='Ativo' required value={asset} onChange={(e) => setAsset(e.target.value)}></AddAssetList><br />
+                    <ValueAssetList className='valueAssetList' placeholder='Valor' required type='number' value={valueAssetList} onChange={(e) => setValueAssetList(e.target.value)}></ValueAssetList>
+                    <QuantityAssetList className='quantityAssetList' placeholder='Quantidade' required type='number'value={quantityAssetList} onChange={(e) => setQuantityAssetList(e.target.value)}></QuantityAssetList><br />
+                    <TypeAssetList name='Type' className='typeAssetList' value={typeAssetList} required onChange={(e) => setTypeAssetList(e.target.value)}>
+                        <TypeOption value='' disabled selected>Selecione sua movimentação</TypeOption>
+                        <TypeOption value='compra'>Compra</TypeOption>
+                        <TypeOption value='venda'>Venda</TypeOption>
+                    </TypeAssetList><br />
+                    <AddAssetBtn className='addAssetBtn' type='submit' onClick={(e) => handleAdd(e)}>Adicionar ativo</AddAssetBtn>
                 </form>
-            </div>
-        </div>
+            </ContainerList>
+        </Modal>
     )
 }
 

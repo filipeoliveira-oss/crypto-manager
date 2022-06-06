@@ -4,7 +4,6 @@ import { AssetListContext } from '../../Contexts/AssetList'
 import styled from 'styled-components';
 import './Table.css'
 const axios = require('axios');
-const widgtesRequest = 'https://api.coingecko.com/api/v3'
 
 const TableContainer = styled.div`
 position: fixed;
