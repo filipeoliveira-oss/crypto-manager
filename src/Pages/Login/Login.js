@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import './login.css'
 import { Link } from "react-router-dom";
@@ -147,7 +148,7 @@ function Login(){
     return(
         <>
             <div>
-                <img className='loginImage' src={require('../../Assets/Wavy_Tech-10_Single-10.png')} alt=''/>
+                <img className='loginImage' src={require('../../Assets/Wavy_Tech-10_Single-10.png')} alt='Loading'/>
             </div>
 
                 <AppName className='appName'>Crypto Manager</AppName>
@@ -156,10 +157,10 @@ function Login(){
                 <form className='loginContainer' >
 
                     <Username type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Usuário' className='username'></Username>
-                    <img className='usernameImg' src={require('../../Assets/user.png')} alt=''/>
+                    <img className='usernameImg' src={require('../../Assets/user.png')} alt='Usernamen'/>
 
                     <Password type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Senha' className='password'/>
-                    <img className='passwordImg' src={require('../../Assets/locker.png')} alt=''/>
+                    <img className='passwordImg' src={require('../../Assets/locker.png')} alt='Password'/>
 
                     <ForgotPassword className='forgotPassword'>Esqueceu sua senha?</ForgotPassword>
 

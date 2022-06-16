@@ -1,4 +1,5 @@
-import React, { useState, useEffect, Component } from 'react';
+/* eslint-disable */
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from 'styled-components';

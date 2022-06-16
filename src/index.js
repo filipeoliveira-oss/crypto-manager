@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable */
+import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { transitions, positions, types, Provider as AlertProvider } from 'react-alert'

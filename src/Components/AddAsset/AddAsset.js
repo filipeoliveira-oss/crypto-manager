@@ -1,7 +1,8 @@
+/* eslint-disable */
 import React, { useContext, useState, useEffect } from 'react';
 import { AssetListContext } from '../../Contexts/AssetList'
-import nextId , { setPrefix } from "react-id-generator";
-import { useAlert, positions} from 'react-alert';
+import nextId, { setPrefix } from "react-id-generator";
+import { useAlert, positions } from 'react-alert';
 import './AddAsset.css'
 import styled from 'styled-components';
 const axios = require('axios');
@@ -109,18 +110,16 @@ const QuantityAssetList = styled.input`
             outline: 1px solid ${props => props.theme.addAssetListOutline};
         }
 `
-function AddAsset({ id = 'modal', onClose = () => { }, asset, setAsset}) {
+function AddAsset({ id = 'modal', onClose = () => { }, asset, setAsset }) {
 
     setPrefix('')
     var assetId = nextId()
 
     const { assetTable, setAssetTable } = useContext(AssetListContext)
-    const [valueAssetList, setValueAssetList] = useState(null)
-    const [quantityAssetList, setQuantityAssetList] = useState(null)
-    const [typeAssetList, setTypeAssetList] = useState()
-    const [current, setCurrent ] = useState()
-    const [req, setReq] = useState([[]])
-    const [erro, setErro] = useState(false)
+    const [valueAssetList, setValueAssetList] = useState('')
+    const [quantityAssetList, setQuantityAssetList] = useState('')
+    const [typeAssetList, setTypeAssetList] = useState('')
+    const [current, setCurrent] = useState()
     const alert = useAlert()
     const url = `https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${asset}`
 
@@ -129,60 +128,64 @@ function AddAsset({ id = 'modal', onClose = () => { }, asset, setAsset}) {
         if (e.target.id === id) onClose();
     }
 
-    useEffect(()=>{
-        
+    useEffect(() => {
+
         localStorage.setItem("asset", JSON.stringify(assetTable));
-    }, )
+    })
 
 
-    useEffect(()=>{
+
+    useEffect(() => {
         axios.get(url)
-        .then(function(response){
-            if(response.data.length == 0){
-                alert.error(`Por favor, digite um ativo válido. ${asset} é um ativo inexistente`)
-                setErro(!erro)
-            }else{
-                setCurrent(response.data[0].current_price)
-            }
-        })
+            .then(function (response) {
+                if (response.data.length != 0) {
+                    setCurrent(response.data[0].current_price)
+                }
+            })
+
     }, [typeAssetList])
-
-
-    useEffect(()=>{
-        setAsset('')
-        setTypeAssetList('')
-    }, [erro])
 
     function handleAdd(e) {
 
+        axios.get(url)
+            .then(function (response) {
+                if (response.data.length == 0) {
+                    alert.error(`Por favor, digite um ativo válido. ${asset} é um ativo inexistente`,{
+                        timeout: 3000,
+                        position: positions.TOP_CENTER
+                    })
+                } else if (asset != '' && valueAssetList != '' &&
+                    quantityAssetList != '' &&
+                    typeAssetList != '') {
+                    setAssetTable((assetTable) => [...assetTable, {
+                        id: assetId,
+                        asset: asset,
+                        action: typeAssetList,
+                        value: valueAssetList,
+                        quantity: quantityAssetList,
+                        current: current
+                    }])
 
-        if (asset != null && valueAssetList != null &&
-            quantityAssetList != null &&
-            typeAssetList != null) {
-            setAssetTable((assetTable) => [...assetTable, {
-                id: assetId,
-                asset: asset,
-                action: typeAssetList,
-                value: valueAssetList,
-                quantity: quantityAssetList,
-                current: current
-            }])
+                    alert.success('Ativo adicionado', {
+                        timeout: 2000,
+                        position: positions.TOP_CENTER
+                    })
 
+                    setTypeAssetList('')
+                    setAsset('')
+                    setValueAssetList('')
+                    setQuantityAssetList('')
 
-            alert.success('Ativo adicionado',{
-                timeout: 2000,
-                position: positions.TOP_CENTER
+                } else {
+                    alert.error('Por favor, preencha todos os campos', {
+                        timeout: 2000,
+                        position: positions.TOP_CENTER
+                    })
+                }
+
             })
 
-            
-        }
-
-        setTypeAssetList('')
-        setAsset('')
-        setValueAssetList('')
-        setQuantityAssetList('')
         e.preventDefault()
-
     }
 
     return (
@@ -196,7 +199,7 @@ function AddAsset({ id = 'modal', onClose = () => { }, asset, setAsset}) {
                 <form className='contentList'>
                     <AddAssetList className='addAssetList' placeholder='Ativo' required value={asset} onChange={(e) => setAsset(e.target.value)}></AddAssetList><br />
                     <ValueAssetList className='valueAssetList' placeholder='Valor' required type='number' value={valueAssetList} onChange={(e) => setValueAssetList(e.target.value)}></ValueAssetList>
-                    <QuantityAssetList className='quantityAssetList' placeholder='Quantidade' required type='number'value={quantityAssetList} onChange={(e) => setQuantityAssetList(e.target.value)}></QuantityAssetList><br />
+                    <QuantityAssetList className='quantityAssetList' placeholder='Quantidade' required type='number' value={quantityAssetList} onChange={(e) => setQuantityAssetList(e.target.value)}></QuantityAssetList><br />
                     <TypeAssetList name='Type' className='typeAssetList' value={typeAssetList} required onChange={(e) => setTypeAssetList(e.target.value)}>
                         <TypeOption value='' disabled selected>Selecione sua movimentação</TypeOption>
                         <TypeOption value='compra'>Compra</TypeOption>

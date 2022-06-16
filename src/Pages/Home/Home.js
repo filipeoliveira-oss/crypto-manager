@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import Loading from '../../Components/Loading/Loading';
 import styled from 'styled-components'
@@ -12,7 +13,6 @@ margin-left: 250px;
 display: flex;
 flex-direction: column;
 margin-top: 25px;
-
 
 `
 
@@ -36,6 +36,16 @@ box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
 
 overflow: auto;
 
+
+transition: all ease 0.7s;
+
+@media(max-width: 1300px){
+    width: 70%;
+}
+
+@media(max-width: 880px){
+    width: 60%;
+}
 
 `
 const A = styled.a`
@@ -79,6 +89,7 @@ function Home(){
             <Welcome className='welcome'>Bem vindo(a), Filipe Gabriel</Welcome> 
 
             <News className='news'>
+                
                 {articles.length == 1? <Loading/>
                 :
                 <>

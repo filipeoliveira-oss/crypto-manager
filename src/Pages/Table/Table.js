@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useContext, useEffect } from 'react';
 import AddAsset from '../../Components/AddAsset/AddAsset';
 import { AssetListContext } from '../../Contexts/AssetList'
@@ -18,6 +19,18 @@ background: ${props => props.theme.tableContainerBGCWebkit};
 background: ${props => props.theme.tableContainerBGCOLiner};
 background: ${props => props.theme.tableContainerBGCMozLinear};
 background: ${props => props.theme.tableContainerBGCLinearGradient};
+
+
+transition: all ease 0.7s;
+
+
+@media(max-width: 1270px){
+	width: 75%;
+}
+
+@media(max-width: 750px){
+	margin-left: 20%;
+}
 `
 
 const TableTag = styled.table`
@@ -78,6 +91,13 @@ user-select: none;
 
 	  transition: all ease 0.3s;
 }
+
+@media(max-width: 570px){
+	width: 40%;
+	margin-Left: 30%;
+
+}
+
 `
 const WidgetAssetInfo = styled.div`
 display: absolute;
@@ -94,6 +114,16 @@ box-shadow: 0 4px 30px ${props => props.theme.tableBoxShadow};
 backdrop-filter: blur(4.3px);
 -webkit-backdrop-filter: blur(4.3px);
 border: 1px solid ${props => props.theme.tableWidgetBorder};
+
+transition: all ease 0.7s;
+
+@media(max-width: 1600px){
+	margin-left: 60%
+}
+
+@media(max-width: 1270px){
+	display: none
+}
 `
 
 const WidgetAssetConversor = styled.div`
@@ -101,7 +131,7 @@ display: flex;
 flex-direction: column;
 position:fixed;
 margin-left: 70%;
-margin-top: 25%;
+margin-top: 25%;	
 width: 500px;
 height: 236px;
 color: ${props => props.theme.tableWhiteSmoke};
@@ -116,16 +146,27 @@ border: 1px solid ${props => props.theme.tableWidgetBorder};
 justify-content: center;
 align-items: center;
 
+transition: all ease 0.7s;
+
+@media(max-width: 1600px){
+	margin-left: 60%;
+	margin-top: 30%;
+}
+
+@media(max-width: 1270px){
+	display: none
+}
+
 `
 
 function Table(props) {
-
 
 	const [widgets, setWidgets] = useState([{}])
 	const [isAddModalVisible, setIsAddModalVisible] = useState(false)
 	const { assetTable } = useContext(AssetListContext)
 	const [assetToCoin, setAssetToCoin] = useState(0)
 	const [coinToAsset, setCoinToAsset] = useState(0)
+
 
 	function getLP(item) {
 		if (item.action == 'compra') {
@@ -159,37 +200,63 @@ function Table(props) {
 	}, [assetToCoin])
 
 
+	async function getCurrent(selected,table, i) {
+		const actual = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?price_change_percentage=24h&vs_currency=BRL&ids=${selected}`).then(function(response){
+			table[i].current = response.data[0].current_price
+			// table[i].current = 'sim'
+			localStorage.setItem('asset', JSON.stringify(table))
+		})
+
+		return actual
+	}
+
+
+	useEffect(() => {
+		var list = localStorage.getItem('asset')
+		var table = JSON.parse(list)
+		
+		if (list) {
+
+			for (var i = 0; i <= table.length - 1; i++) {
+				var selected = table[i].asset
+				getCurrent(selected,table, i)
+			}
+		}
+	},[])
+
+
+	
 	return (
 		<>
-				<TableContainer class="tableContainer">
-					<TableTag>
-						<thead>
-							<tr class="tableRow">
-								<TableTh class="tableColumn">Ativo</TableTh>
-								<TableTh class="tableColumn">Movimento</TableTh>
-								<TableTh class="tableColumn">Valor</TableTh>
-								<TableTh class="tableColumn">Quantidade</TableTh>
-								<TableTh class="tableColumn">Valor atual</TableTh>
-								<TableTh class="tableColumn ">L/P</TableTh>
-							</tr>
-						</thead>
-						<tbody>
-							{assetTable.map((item) => {
-								return (
-									<tr class="tableRow tableRowClick" key={item.id} onClick={() => getWidgets(item.asset)}>
-										<TableColumTd class="tableColumnTd" >{item.asset}</TableColumTd>
-										<TableColumTd class="tableColumnTd" >{item.action}</TableColumTd>
-										<TableColumTd class="tableColumnTd" >{item.value}</TableColumTd>
-										<TableColumTd class="tableColumnTd" >{item.quantity}</TableColumTd>
-										<TableColumTd class="tableColumnTd" >{item.current}</TableColumTd>
-										<TableColumTd class="tableColumnTd" >{getLP(item)}</TableColumTd>
-									</tr>
-								)
-							})}
-						</tbody>
-					</TableTag>
-					<AddTableAssetBtn className='addTableAssetBtn' onClick={() => { setIsAddModalVisible(true) }}>Adicionar novo ativo</AddTableAssetBtn>
-				</TableContainer>
+			<TableContainer class="tableContainer">
+				<TableTag>
+					<thead>
+						<tr class="tableRow">
+							<TableTh class="tableColumn">Ativo</TableTh>
+							<TableTh class="tableColumn">Movimento</TableTh>
+							<TableTh class="tableColumn">Valor</TableTh>
+							<TableTh class="tableColumn">Quantidade</TableTh>
+							<TableTh class="tableColumn">Valor atual</TableTh>
+							<TableTh class="tableColumn ">L/P</TableTh>
+						</tr>
+					</thead>
+					<tbody>
+						{assetTable.map((item) => {
+							return (
+								<tr class="tableRow tableRowClick" key={item.id} onClick={() => getWidgets(item.asset)}>
+									<TableColumTd class="tableColumnTd" >{item.asset}</TableColumTd>
+									<TableColumTd class="tableColumnTd" >{item.action}</TableColumTd>
+									<TableColumTd class="tableColumnTd" >{item.value}</TableColumTd>
+									<TableColumTd class="tableColumnTd" >{item.quantity}</TableColumTd>
+									<TableColumTd class="tableColumnTd" >{item.current}</TableColumTd>
+									<TableColumTd class="tableColumnTd" >{getLP(item)}</TableColumTd>
+								</tr>
+							)
+						})}
+					</tbody>
+				</TableTag>
+				<AddTableAssetBtn className='addTableAssetBtn' onClick={() => { setIsAddModalVisible(true) }}>Adicionar novo ativo</AddTableAssetBtn>
+			</TableContainer>
 
 			{isAddModalVisible ?
 				<AddAsset
@@ -206,7 +273,7 @@ function Table(props) {
 					:
 
 					<>
-						<img className='widgetAssetInfo--image' src={widgets.image}></img>
+						<img className='widgetAssetInfo--image' src={widgets.image} alt='AssetInfo'></img>
 						<div className='widgetAssetInfo--values'>
 							<h4>{widgets.length != undefined ? <h4>Price</h4> : widgets.current_price} </h4>
 							<h4 className='widgetAssetInfo--values--variation'>{widgets.length != undefined ? <h4>Variation</h4> : <h4>({widgets.price_change_percentage_24h}%)</h4>}</h4>
@@ -235,7 +302,6 @@ function Table(props) {
 						</div>
 					</>
 				}
-
 			</WidgetAssetInfo>
 
 			<WidgetAssetConversor className='widgetAssetConversor'>
@@ -244,7 +310,7 @@ function Table(props) {
 					<>
 						<h1>Conversor</h1>
 						<div className='widgetAssetConversor--asset'>
-							<img src={widgets.image}></img>
+							<img src={widgets.image} alt='Widgets Conversor'></img>
 							<input value={assetToCoin} onChange={(e) => { setAssetToCoin(e.target.value) }}></input>
 						</div>
 						<div className='widgetAssetConversor--currency'>
