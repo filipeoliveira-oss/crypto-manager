@@ -34,6 +34,12 @@ If you have any idea on how to improve this project, fell free to request a pull
 [<img alt="GitHub" width="26px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />][github] [GitHub](https://github.com/filipeoliveira-oss)
 <br/>
 
+### Other Informations
+- Please be aware that all your asset list is stored at your LocalStorage, so if you change your browser or delete this information, your will completely lost your list
+
+- The default theme is light one, and also stored at your LocalStorage. Once you change the theme, every time you open the app it will load with the desired theme
+
+
 ## Learn More about React
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
@@ -77,6 +83,10 @@ Se você tem alguma ideia de como melhorar esse projeto, sinta-se livre para faz
 [<img alt="GitHub" width="26px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />][github] [GitHub](https://github.com/filipeoliveira-oss)
 <br/>
 
+### Other Informations
+- Por favor esteja ciente que toda sua lista de ativos é armazenada no seu LocalStorage, então caso troca de navegador ou delete essa informação, toda sua lista de ativos será perdida
+
+- O tema padrão é o tema claro, e também é armazenado no seu LocalStorage. Uma vez que o tema seja alterado, toda vez que você abrir o aplicativo, será carregado com o tema desejado
 
 ## Aprenda mais sobre React
 
