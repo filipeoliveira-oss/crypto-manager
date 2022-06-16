@@ -12,7 +12,7 @@ import Home from './Pages/Home/Home';
 import Search from './Pages/Search/Search';
 import ReactTooltip from 'react-tooltip';
 import Table from './Pages/Table/Table';
-
+import NotFound from './Pages/NotFound/NotFound';
 
 
 
@@ -72,7 +72,10 @@ const LightTheme = {
   addAssetBtnBgc: '#7064F7',
   addAssetBtnBgcHover: '#4E04FE',
   addAssetHeaderLabelColor: '#000',
-  addAssetListOutline: 'blueviolet'
+  addAssetListOutline: 'blueviolet',
+
+  errorInfoColor: 'Black',
+  errorReturnColor: '#3B2F79'
 }
 const DarkTheme = {
   appBGC: '#1F2933',
@@ -128,7 +131,10 @@ const DarkTheme = {
   addAssetBtnBgc: '#21afa1',
   addAssetBtnBgcHover: '#109487',
   addAssetHeaderLabelColor: '#FFF',
-  addAssetListOutline: '#109487'
+  addAssetListOutline: '#109487',
+
+  errorInfoColor: 'white',
+  errorReturnColor: '#109487'
 }
 
 
@@ -173,6 +179,8 @@ function App() {
               <Route path="home" element={[<Home />, <SideBar theme={theme} setTheme={setTheme} />]} />
               <Route path="search" element={[<Search asset={asset} setAsset={setAsset} />, <SideBar theme={theme} setTheme={setTheme} />]} />
               <Route path="table" element={[<Table asset={asset} setAsset={setAsset} />, <SideBar theme={theme} setTheme={setTheme} />]} />
+              <Route path="*" element={<NotFound/>} />
+              
             </Routes>
           </BrowserRouter>
         </AssetListProvider>

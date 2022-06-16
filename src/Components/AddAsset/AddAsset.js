@@ -4,112 +4,9 @@ import { AssetListContext } from '../../Contexts/AssetList'
 import nextId, { setPrefix } from "react-id-generator";
 import { useAlert, positions } from 'react-alert';
 import './AddAsset.css'
-import styled from 'styled-components';
+import {Modal,ContainerList, HeaderLabel, CloseButon, HeaderLine, AddAssetList, ValueAssetList, QuantityAssetList, TypeAssetList,TypeOption, AddAssetBtn} from '../../Components/TagComponents/TagComponents';
 const axios = require('axios');
 
-const Modal = styled.div`
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-const CloseBtn = styled.button`
-background-color: transparent;
-    border: none;
-    outline: none;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    margin-left: calc(100% - 30px);
-    cursor: pointer;
-    position: relative;
-   
-    &::before, &::after{
-        content: ' ';
-        position: absolute;
-        width: 2.5px;
-        height: 24px;
-        background-color: ${props => props.theme.addAssetsCloseBtn};
-        margin-top: 5px;
-        right: 40px;
-        
-    }
-    &::before{
-        transform: rotate(45deg);
-    }
-    &::after{
-        transform: rotate(-45deg);
-    }
-`
-
-const HeaderLine = styled.hr`
-    width: 90%;
-    color: white; 
-`
-
-const HeaderLabel = styled.h1`
-    color: ${props => props.theme.addAssetHeaderLabelColor};
-    font-size: 20px;
-    margin-left: 25px;
-    margin-top: 5px;
-    font-weight: bold ;
-    flex-direction: row;
-`
-
-const ContainerList = styled.div`
-width: 400px;
-height: 300px;
-background-color: ${props => props.theme.addAssetsContainerListBgc};
-`
-
-const AddAssetBtn = styled.button`
-    width: 88%;
-    height: 35px;
-    text-align: center;
-    margin-left: 6.5%;
-    font-weight: 600;
-    border: none;
-    border-radius:5px;
-    color: ${props => props.theme.addAssetBtnColor};
-    background-color:${props => props.theme.addAssetBtnBgc};
-
-        &:hover{
-            -webkit-filter: brightness(100%);   
-            background-color: ${props => props.theme.addAssetBtnBgcHover};
-        
-            transition: all ease 0.3s;
-        }
-`
-
-const AddAssetList = styled.input`
-        &:focus{
-            outline: 1px solid ${props => props.theme.addAssetListOutline};
-        }
-`
-const TypeAssetList = styled.select`
-        &:focus{
-            outline: 1px solid ${props => props.theme.addAssetListOutline};
-        }
-`
-const TypeOption = styled.option``
-
-const ValueAssetList = styled.input`
-        &:focus{
-            outline: 1px solid ${props => props.theme.addAssetListOutline};
-        }
-`
-const QuantityAssetList = styled.input`
-        &:focus{
-            outline: 1px solid ${props => props.theme.addAssetListOutline};
-        }
-`
 function AddAsset({ id = 'modal', onClose = () => { }, asset, setAsset }) {
 
     setPrefix('')
@@ -193,7 +90,7 @@ function AddAsset({ id = 'modal', onClose = () => { }, asset, setAsset }) {
             <ContainerList className='containerList'>
                 <div className='header'>
                     <HeaderLabel className='headerLabel'>Adicionar novo ativo</HeaderLabel>
-                    <CloseBtn className='closeBtn' onClick={onClose}></CloseBtn>
+                    <CloseButon className='closeBtn' onClick={onClose}></CloseButon>
                 </div>
                 <HeaderLine className='headerLine'></HeaderLine>
                 <form className='contentList'>
